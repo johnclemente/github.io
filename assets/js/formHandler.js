@@ -22,7 +22,7 @@ const firebaseConfig = {
   const database = getDatabase(app); // Use getDatabase to initialize
 
 let isSubmitting = false; // Flag to track submission status
-const submissionCooldown = 30000; // Cooldown period in milliseconds (e.g., 5 seconds)
+const submissionCooldown = 5000; // Cooldown period in milliseconds (e.g., 5 seconds)
 
 function rateLimitSubmission() {
   if (isSubmitting) {
@@ -105,9 +105,6 @@ document.getElementById("contactForm").addEventListener("submit", function (even
         );
       });
 
-  // After successful submission, reset the form
-  document.getElementById("contactForm").reset(); // Reset the form
-  alert("Your message has been sent successfully!"); // Notify the user
 });
 
 
