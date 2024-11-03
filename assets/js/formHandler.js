@@ -22,7 +22,7 @@ const firebaseConfig = {
   const database = getDatabase(app); // Use getDatabase to initialize
 
 let isSubmitting = false; // Flag to track submission status
-const submissionCooldown = 5000; // Cooldown period in milliseconds (e.g., 5 seconds)
+const submissionCooldown = 30000; // Cooldown period in milliseconds (e.g., 5 seconds)
 
 function rateLimitSubmission() {
   if (isSubmitting) {
