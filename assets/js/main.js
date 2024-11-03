@@ -6,7 +6,7 @@ import {
   set,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
-// Your web app's Firebase configuration
+// Turns out this stuff isn't private...who knew?
 const firebaseConfig = {
   apiKey: "AIzaSyDAlZPkdgsIAXGpx6NYMciYS3MGeD9uAC0",
   authDomain: "johns-portfolio--1702339781998.firebaseapp.com",
