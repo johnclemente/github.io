@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description"
+    content="John's portfolio showcasing expertise in network security, game development, and tech automation." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png" />
+
+  <!-- =====BOX ICONS===== -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <title>John's Portfolio website</title>
+</head>
+
+<body>
+  <!--===== HEADER =====-->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <div>
+        <a href="#" class="nav__logo">John</a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#home" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About</a>
+          </li>
+          <!-- <li class="nav__item">
+              <a href="#skills" class="nav__link">Skills</a>
+            </li> -->
+          <li class="nav__item">
+            <a href="#work" class="nav__link">Projects</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="l-main">
+    <!--===== HOME =====-->
+    <section class="home bd-grid" id="home">
+      <div class="home__data">
+        <h1 class="home__title">
+          Hi,<br />I'm <span class="home__title-color">John</span><br />and
+          I'm looking for <br />
+          <span class="home__title-color">challenges</span>
+        </h1>
+      </div>
+
+      <div class="home__social">
+        <a href="https://www.linkedin.com/in/john-clemente-554826114/" class="home__social-icon"><i
+            class="bx bxl-linkedin"></i></a>
+        <a href="https://github.com/johnclemente" class="home__social-icon"><i class="bx bxl-github"></i></a>
+        <a href="https://johnclemente.itch.io/" class="home__social-icon"><i class="bx bxl-unity"></i></a>
+      </div>
+
+      <div class="home__img">
+        <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <mask id="mask0" mask-type="alpha">
+            <path
+              d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
+          </mask>
+          <g mask="url(#mask0)">
+            <path
+              d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z" />
+            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png" alt="John's headshot" />
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+      <h2 class="section-title">About</h2>
+
+      <div class="about__container bd-grid">
+        <div class="about__img">
+          <img src="assets/img/about.png" alt="A picture of John, ready to take on some automation!" />
+        </div>
+
+        <div>
+          <h2 class="about__subtitle">I'm John</h2>
+          <p class="about__text">
+            I'm passionate about all things tech, especially Network Security,
+            Game Development, and Automation!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--===== WORK (called "Projects") =====-->
+    <section class="work section" id="work">
+      <h2 class="section-title">Here are some of my projects</h2>
+      <div class="work__container bd-grid">
+
+        <div class="work__card">
+          <div class="work__badge">Current Project</div>
+          <a href="https://capable-sovereign-5bd.notion.site/GCP-project-Firebase-backend-c0e43f7ddd724c41851d250af303d7c8?pvs=74"
+            target="_blank" rel="noopener noreferrer">
+            <img src="assets/img/Cards/contactForm.png" alt="Form Validation Project" class="work__img" />
+          </a>
+          <p class="work__description">Form validation and security</p>
+        </div>
+
+        <!-- CTF progress -->
+        <div class="work__card">
+          <a href="https://capable-sovereign-5bd.notion.site/CTF-94ddc03691d84b76b804a873fb110654?pvs=4" target="_blank"
+            rel="noopener noreferrer">
+            <img src="assets/img/Cards/burpImage.png" alt="CTF progress" class="work__img" />
+          </a>
+          <p class="work__description">Tracking my Capture The Flag progress.</p>
+        </div>
+
+        <!-- Game for Nephews -->
+        <div class="work__card">
+          <a href="https://apps.apple.com/az/app/christmas-caper/id6472870752" target="_blank"
+            rel="noopener noreferrer">
+            <img src="assets/img/Cards/clementeChristmas.png" alt="A picture of Clemente Christmas Mobile Game!" />
+          </a>
+          <p class="work__description">A free mobile app for iOS and Android</p>
+        </div>
+
+        <!-- Graviscape -->
+        <div class="work__card">
+          <div class="work__badge">Top 10% finisher</div>
+          <a href="https://johnclemente.itch.io" target="_blank" rel="noopener noreferrer">
+            <img src="assets/img/Cards/Title.png" alt="Graviscape GMTK Game Jam Entry." />
+          </a>
+          <p class="work__description">A gravity-based puzzle game</p>
+        </div>
+
+        <!-- Rendezvous -->
+        <div class="work__card">
+          <a href="https://johnclemente.itch.io/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/img/Cards/RendezvousTitleScreen.png" alt="Entry for Ludum Dare 55." />
+          </a>
+          <p class="work__description">Ludum Dare 55 game jam entry</p>
+        </div>
+
+        <!-- Human Resources -->
+        <div class="work__card">
+          <a href="https://johnclemente.itch.io/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/img/Cards/HumanResources.png" alt="Entry for Mini Jame Gam 27" />
+          </a>
+          <p class="work__description">A game jam entry about escaping work</p>
+        </div>
+
+        <!-- Dot Trail -->
+        <div class="work__card">
+          <a href="https://twitter.com/clemonpepper" target="_blank" rel="noopener noreferrer">
+            <img src="assets/img/Cards/lofiGirlMainMenu.png" alt="Mobile puzzle game: Dot Trail." />
+          </a>
+          <p class="work__description">A unreleased puzzle mobile game</p>
+        </div>
+
+      </div>
+      <!-- end work__container -->
+    </section>
+
+    <!--===== CONTACT =====-->
+    <section class="contact section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact__container bd-grid">
+        <form id="contactForm" class="contact__form">
+          <input type="text" id="name" name="name" placeholder="Name" class="contact__input" required />
+          <input type="email" id="email" name="email" placeholder="Email" class="contact__input" required />
+          <textarea id="message" name="message" cols="0" rows="10" class="contact__input" required></textarea>
+          <input type="submit" value="Send" class="contact__button button" />
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!--===== FOOTER =====-->
+  <footer class="footer">
+    <p class="footer__title">John</p>
+    <div class="footer__social">
+      <a href="https://www.linkedin.com/in/john-clemente-554826114/" class="footer__icon"><i
+          class="bx bxl-linkedin"></i></a>
+
+      <a href="https://github.com/johnclemente" class="footer__icon"><i class="bx bxl-github"></i></a>
+
+      <a href="https://johnclemente.itch.io/" class="footer__icon"><i class="bx bxl-unity"></i></a>
+    </div>
+  </footer>
+
+  <!--===== SCROLL REVEAL =====-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!--===== MAIN JS =====-->
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>
