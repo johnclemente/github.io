@@ -1,62 +1,62 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  push,
-  set,
-} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+// import {
+//   getDatabase,
+//   ref,
+//   push,
+//   set,
+// } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
-// Turns out this stuff isn't private...who knew?
-const firebaseConfig = {
-  apiKey: "AIzaSyDAlZPkdgsIAXGpx6NYMciYS3MGeD9uAC0",
-  authDomain: "johns-portfolio--1702339781998.firebaseapp.com",
-  projectId: "johns-portfolio--1702339781998",
-  storageBucket: "johns-portfolio--1702339781998.appspot.com",
-  messagingSenderId: "560668929507",
-  appId: "1:560668929507:web:54f3e35fde733e732784d6",
-  measurementId: "G-G43ZGCLD21",
-};
+// // Turns out this stuff isn't private...who knew?
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDAlZPkdgsIAXGpx6NYMciYS3MGeD9uAC0",
+//   authDomain: "johns-portfolio--1702339781998.firebaseapp.com",
+//   projectId: "johns-portfolio--1702339781998",
+//   storageBucket: "johns-portfolio--1702339781998.appspot.com",
+//   messagingSenderId: "560668929507",
+//   appId: "1:560668929507:web:54f3e35fde733e732784d6",
+//   measurementId: "G-G43ZGCLD21",
+// };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app); // Use getDatabase to initialize
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const database = getDatabase(app); // Use getDatabase to initialize
 
-// Handle form submission
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
+// // Handle form submission
+// document
+//   .getElementById("contactForm")
+//   .addEventListener("submit", function (event) {
+//     event.preventDefault(); // Prevent the form from submitting the traditional way
 
-    // Get form values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+//     // Get form values
+//     const name = document.getElementById("name").value;
+//     const email = document.getElementById("email").value;
+//     const message = document.getElementById("message").value;
 
-    // Validate input
-    if (!name || !email || !message) {
-      alert("All fields are required!");
-      return;
-    }
+//     // Validate input
+//     if (!name || !email || !message) {
+//       alert("All fields are required!");
+//       return;
+//     }
 
-    // Create a new entry in Firebase
-    const newContactRef = push(ref(database, "contacts")); // Use push to generate a new reference
-    set(newContactRef, {
-      name: name,
-      email: email,
-      message: message,
-      timestamp: new Date().toISOString(),
-    })
-      .then(function () {
-        alert("Your message has been sent successfully!");
-        document.getElementById("contactForm").reset(); // Reset the form
-      })
-      .catch(function (error) {
-        console.error("Error saving to database: ", error);
-        alert(
-          "There was an error sending your message. Please try again later."
-        );
-      });
-  });
+//     // Create a new entry in Firebase
+//     const newContactRef = push(ref(database, "contacts")); // Use push to generate a new reference
+//     set(newContactRef, {
+//       name: name,
+//       email: email,
+//       message: message,
+//       timestamp: new Date().toISOString(),
+//     })
+//       .then(function () {
+//         alert("Your message has been sent successfully!");
+//         document.getElementById("contactForm").reset(); // Reset the form
+//       })
+//       .catch(function (error) {
+//         console.error("Error saving to database: ", error);
+//         alert(
+//           "There was an error sending your message. Please try again later."
+//         );
+//       });
+//   });
 
 /*===== MENU SHOW =====*/
 const showMenu = (toggleId, navId) => {
