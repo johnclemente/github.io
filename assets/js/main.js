@@ -177,8 +177,9 @@ const z = "X2ZsYWc=";
 
 const sol = atob(x) + atob(y) + atob(z);
 
-function checkFlag(inp) {
+function attempt(inp) {
   if (inp === sol) {
+    alert("You did it!");
     activatePartyMode();
   } else {
     alert("Incorrect! Try again.");
@@ -195,6 +196,6 @@ function activatePartyMode() {
   }, 1000);
 }
 
-window.checkFlag = checkFlag;
+window.attempt = attempt;
 window.activatePartyMode = activatePartyMode;
 
