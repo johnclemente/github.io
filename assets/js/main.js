@@ -171,27 +171,21 @@ const sr = ScrollReveal({
 });
 
 
-// Encoded parts of the flag
-const part1 = "eW91cl9j"
-const part2 = "b3JyZWN0";
-const part3 = "X2ZsYWc=";
+const x = "eW91cl9j"
+const y = "b3JyZWN0";
+const z = "X2ZsYWc=";
 
-// Combine and decode the flag
-const correctFlag = atob(part1) + atob(part2) + atob(part3);
+const sol = atob(x) + atob(y) + atob(z);
 
-// Function to check the flag
-function checkFlag(inputFlag) {
-  if (inputFlag === correctFlag) {
+function checkFlag(inp) {
+  if (inp === sol) {
     activatePartyMode();
   } else {
-    alert("Incorrect flag! Try again.");
+    alert("Incorrect! Try again.");
   }
 }
 
-// Function to activate party mode
 function activatePartyMode() {
-
-
   const hueValues = [260, 355, 224, 340];
   let index = 0;
 
@@ -201,7 +195,6 @@ function activatePartyMode() {
   }, 1000);
 }
 
-// Expose functions globally
 window.checkFlag = checkFlag;
 window.activatePartyMode = activatePartyMode;
 
