@@ -169,3 +169,39 @@ const sr = ScrollReveal({
   delay: 200,
   //     reset: true
 });
+
+
+// Encoded parts of the flag
+const part1 = "eW91cl9j"
+const part2 = "b3JyZWN0";
+const part3 = "X2ZsYWc=";
+
+// Combine and decode the flag
+const correctFlag = atob(part1) + atob(part2) + atob(part3);
+
+// Function to check the flag
+function checkFlag(inputFlag) {
+  if (inputFlag === correctFlag) {
+    activatePartyMode();
+  } else {
+    alert("Incorrect flag! Try again.");
+  }
+}
+
+// Function to activate party mode
+function activatePartyMode() {
+
+
+  const hueValues = [260, 355, 224, 340];
+  let index = 0;
+
+  setInterval(() => {
+    document.documentElement.style.setProperty('--hue-color', hueValues[index]);
+    index = (index + 1) % hueValues.length;
+  }, 1000);
+}
+
+// Expose functions globally
+window.checkFlag = checkFlag;
+window.activatePartyMode = activatePartyMode;
+
