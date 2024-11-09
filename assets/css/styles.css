@@ -10,6 +10,10 @@
   --hue-color: 224;
   --first-color: hsl(var(--hue-color), 89%, 60%);
   --second-color: hsl(var(--hue-color), 56%, 12%);
+  --party-first-color: hsl(260, 89%, 60%);
+  --party-second-color: hsl(355, 89%, 60%);
+  --party-third-color: hsl(224, 89%, 60%);
+  --party-fourth-color: hsl(340, 89%, 60%);
   /*===== Fuente y tipografia =====*/
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
@@ -24,6 +28,18 @@
   /*===== z index =====*/
   --z-back: -10;
   --z-fixed: 100;
+}
+
+/* Define party mode styles */
+.party-mode .home__title-color {
+  animation: colorChange 2s infinite alternate;
+}
+
+@keyframes colorChange {
+  0% { color: var(--party-first-color); }
+  25% { color: var(--party-second-color); }
+  50% { color: var(--party-third-color); }
+  100% { color: var(--party-fourth-color); }
 }
 
 @media screen and (min-width: 968px) {
@@ -231,15 +247,56 @@ img {
   position: absolute;
   right: 0;
   bottom: 0;
+  top: 30%;
   width: 260px;
 }
 
 .home__blob {
-  fill: var(--first-color);
+  width: 300px;
+  height: 300px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+  position: relative;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
+
 .home__blob-img {
-  width: 360px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%; /* Ensures the image matches the circular blob shape */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home__img {
+    width: 200px; /* Reduces width on medium screens */
+    top: 40%;
+  }
+
+  .home__blob {
+    width: 240px; /* Reduces blob size on medium screens */
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__img {
+    width: 200px; /* Further reduces width on smaller screens */
+    top: 60%;
+
+  }
+
+  .home__blob {
+    width: 200px; /* Further reduces blob size on smaller screens */
+    height: 200px;
+    right: 50%
+  }
 }
 
 /*BUTTONS*/
