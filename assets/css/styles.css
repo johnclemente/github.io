@@ -1,34 +1,53 @@
 /*===== GOOGLE FONTS =====*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 /*===== VARIABLES CSS =====*/
-:root {
-  --header-height: 3rem;
-  --font-semi: 600;
-  /*===== Colores =====*/
-  /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
-  /* HSL color mode */
-  --hue-color: 224;
-  --first-color: hsl(var(--hue-color), 89%, 60%);
-  --second-color: hsl(var(--hue-color), 56%, 12%);
-  --party-first-color: hsl(260, 89%, 60%);
-  --party-second-color: hsl(355, 89%, 60%);
-  --party-third-color: hsl(224, 89%, 60%);
-  --party-fourth-color: hsl(340, 89%, 60%);
-  /*===== Fuente y tipografia =====*/
-  --body-font: "Poppins", sans-serif;
-  --big-font-size: 2rem;
-  --h2-font-size: 1.25rem;
-  --normal-font-size: 0.938rem;
-  --smaller-font-size: 0.75rem;
-  /*===== Margenes =====*/
-  --mb-2: 1rem;
-  --mb-4: 2rem;
-  --mb-5: 2.5rem;
-  --mb-6: 3rem;
-  /*===== z index =====*/
-  --z-back: -10;
-  --z-fixed: 100;
-}
+
+  :root {
+    --header-height: 3rem;
+    --font-semi: 600;
+  
+    /* Dark Mode Colors */
+    --hue-color: 224;
+    --first-color: hsl(var(--hue-color), 89%, 60%); /* Accent color blue */
+    --background-color: hsl(var(--hue-color), 15%, 15%); /* Background color blackish */
+    --text-color: hsl(var(--hue-color), 90%, 95%); /* Primary text color */
+  
+    /* Font and typography */
+    --body-font: "Poppins", sans-serif;
+    --big-font-size: 2rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: 0.938rem;
+    --smaller-font-size: 0.75rem;
+  
+    /* Margins */
+    --mb-2: 1rem;
+    --mb-4: 2rem;
+    --mb-5: 2.5rem;
+    --mb-6: 3rem;
+  
+    /* Z-index */
+    --z-back: -10;
+    --z-fixed: 100;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .nav__logo,
+  .nav__link,
+  .footer__icon,
+  .footer__title,
+  .footer__social {
+    color: var(--text-color);
+  }
+  
+  .button {
+    background-color: var(--first-color);
+    color: var(--background-color);
+  }
+  
 
 /* Define party mode styles */
 .party-mode .home__title-color {
@@ -66,7 +85,7 @@ body {
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  color: var(--second-color);
+  color: var(--text-color);
 }
 
 h1,
@@ -132,8 +151,8 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+  background-color: var(--first-color);
+  box-shadow: var(--text-color);
 }
 
 /*===== NAV =====*/
@@ -153,7 +172,7 @@ img {
     width: 80%;
     height: 100%;
     padding: 2rem;
-    background-color: var(--second-color);
+    background-color: var(--text-color);
     transition: 0.5s;
   }
 }
@@ -164,7 +183,7 @@ img {
 
 .nav__link {
   position: relative;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .nav__link:hover {
@@ -182,11 +201,11 @@ img {
 }
 
 .nav__logo {
-  color: var(--second-color);
+  color: var(--text-color);
 }
 
 .nav__toggle {
-  color: var(--second-color);
+  color: var(--text-color);
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -236,7 +255,7 @@ img {
   width: max-content;
   margin-bottom: var(--mb-2);
   font-size: 1.5rem;
-  color: var(--second-color);
+  color: var(--text-color);
 }
 
 .home__social-icon:hover {
@@ -303,7 +322,7 @@ img {
 .button {
   display: inline-block;
   background-color: var(--first-color);
-  color: #fff;
+  color: var(--text-color);
   padding: 0.75rem 2.5rem;
   font-weight: var(--font-semi);
   border-radius: 0.5rem;
@@ -406,7 +425,7 @@ img {
 
 .work__card {
   position: relative;
-  background-color: #fff;
+  background-color: hsl(var(--hue-color), 15%, 20%); /* Darker shade for the background */
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 4px 25px rgba(14, 36, 49, 0.1);
@@ -430,10 +449,12 @@ img {
   flex-grow: 1;
   padding: 1rem;
   font-size: var(--normal-font-size);
-  color: var(--second-color);
+  color: var(--text-color);
+  background-color: var(--first-color);
   text-align: center;
   max-height: 40em; /* Optional: Limit to approx 3 lines */
   overflow: hidden;
+  border-radius: 0 0 0.5rem 0.5rem; /* Matches card border radius at bottom */
 }
 
 .work__badge {
@@ -441,7 +462,7 @@ img {
   top: 10px;
   right: 10px;
   background-color: var(--first-color);
-  color: #fff;
+  color: var(--text-color);
   padding: 5px 10px;
   font-size: var(--smaller-font-size);
   font-weight: var(--font-semi);
@@ -458,9 +479,17 @@ img {
   font-weight: var(--font-semi);
   padding: 1rem;
   border-radius: 0.5rem;
-  border: 1.5px solid var(--second-color);
+  border: 1.5px solid var(--text-color);
   outline: none;
   margin-bottom: var(--mb-4);
+  background-color: hsl(var(--hue-color), 15%, 25%); /* Slightly lighter than the form background */
+  color: var(--text-color);
+}
+
+.contact__input:focus {
+  border-color: var(--first-color); /* Highlight border on focus */
+  outline: none; /* Remove default outline */
+  /* background-color: var(--text-color); */
 }
 
 .contact__button {
@@ -472,10 +501,19 @@ img {
   margin-left: auto;
 }
 
+.contact__form {
+  width: 360px;
+  padding-top: 2rem;
+  color: hsl(var(--hue-color), 15%, 20%); /* Darker background */
+}
+.contact__container {
+  justify-items: center;
+  color: var(--text-color);
+}
 /* ===== FOOTER =====*/
 .footer {
-  background-color: var(--second-color);
-  color: #fff;
+  background-color: var(--first-color);
+  color: var(--text-color);
   text-align: center;
   font-weight: var(--font-semi);
   padding: 2rem 0;
@@ -492,7 +530,7 @@ img {
 
 .footer__icon {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-color);
   margin: 0 var(--mb-2);
 }
 
@@ -543,13 +581,6 @@ img {
     column-gap: 2rem;
     padding-top: 2rem;
   }
-  .contact__form {
-    width: 360px;
-    padding-top: 2rem;
-  }
-  .contact__container {
-    justify-items: center;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -582,7 +613,7 @@ img {
     display: none;
   }
   .nav__link {
-    color: var(--second-color);
+    color: var(--text-color);
   }
   .home {
     padding: 8rem 0 2rem;
