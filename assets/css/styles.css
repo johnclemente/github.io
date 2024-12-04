@@ -79,7 +79,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--first-color);
+  /* background-color: var(--first-color); */
 }
 
 h1,
@@ -334,6 +334,9 @@ img {
 }
 
 /* ===== ABOUT =====*/
+.about{
+  margin: 200px;
+}
 .about__container {
   row-gap: 2rem;
   text-align: center;
