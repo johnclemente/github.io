@@ -8,7 +8,7 @@
   
     /* Dark Mode Colors */
     --hue-color: 224;
-    --first-color: hsl(var(--hue-color), 89%, 60%); /* Accent color blue */
+    --first-color: hsl(var(--hue-color), 50%, 60%); /* Accent color blue */
     --background-color: hsl(var(--hue-color), 15%, 15%); /* Background color blackish */
     --text-color: hsl(var(--hue-color), 90%, 95%); /* Primary text color */
   
@@ -68,10 +68,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: var(--first-color);
-}
 
 body {
   margin: var(--header-height) 0 0 0;
@@ -79,6 +75,11 @@ body {
   font-size: var(--normal-font-size);
   color: var(--text-color);
   background-color: var(--background-color);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--first-color);
 }
 
 h1,
@@ -122,7 +123,7 @@ img {
   right: 0;
   margin: auto;
   top: 2rem;
-  background-color: var(--second-color);
+  background-color: var(--first-color);
 }
 
 .section {
@@ -351,6 +352,7 @@ img {
   border-radius: 0.5rem;
 }
 
+.about__text { padding-bottom: 40px;}
 /* ===== WORK =====*/
 .work__container {
   display: grid;
@@ -398,7 +400,7 @@ img {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: var(--first-color);
+  background-color: var(--background-color);
   color: var(--text-color);
   padding: 5px 10px;
   font-size: var(--smaller-font-size);
