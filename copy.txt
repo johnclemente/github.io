@@ -1,0 +1,1 @@
+{ find assets \( -name "*.css" -o -name "*.js" -o -name "*.scss" \) -print; find . -maxdepth 1 -name "*.html"; } | while read file; do echo "----- $file -----"; cat "$file"; echo ""; done | pbcopy
