@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Clemente – Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 10pt;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 24px 44px;
+      max-width: 816px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 10px; }
+    .header h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #111;
+    }
+    .header .contact {
+      font-size: 9pt;
+      color: #444;
+      margin-top: 4px;
+    }
+    .header .contact a { color: #444; text-decoration: none; }
+    .header .contact span { margin: 0 6px; color: #bbb; }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1.5px solid #222;
+      margin: 8px 0 6px;
+    }
+    hr.light {
+      border-top: 1px solid #ddd;
+      margin: 5px 0;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 10px; }
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #111;
+      margin-bottom: 5px;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px 12px;
+      font-size: 9.5pt;
+      color: #333;
+    }
+    .skill-item::before { content: "▸ "; color: #888; font-size: 8pt; }
+
+    /* ── Experience ── */
+    .job { margin-bottom: 9px; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .job-company {
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: #111;
+    }
+    .job-date {
+      font-size: 9pt;
+      color: #555;
+      white-space: nowrap;
+    }
+    .job-title {
+      font-size: 9.5pt;
+      color: #444;
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+    .job ul {
+      padding-left: 15px;
+      font-size: 9.5pt;
+      color: #333;
+    }
+    .job ul li { margin-bottom: 1px; line-height: 1.38; }
+    .job .note {
+      font-size: 9pt;
+      color: #555;
+      font-style: italic;
+    }
+
+    /* ── Education ── */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+    }
+    .edu-left .school { font-weight: 700; font-size: 10pt; }
+    .edu-left .degree { font-size: 9.5pt; color: #333; }
+    .edu-left .minor  { font-size: 9pt; color: #555; }
+    .edu-right { text-align: right; font-size: 9pt; color: #555; }
+
+    /* ── Certs ── */
+    .certs { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 4px; }
+    .cert {
+      font-size: 9.5pt;
+      color: #333;
+    }
+    .cert strong { font-weight: 600; }
+
+    /* ── Projects ── */
+    .project { margin-bottom: 7px; }
+    .project-name { font-weight: 700; font-size: 10pt; }
+    .project-desc { font-size: 9.5pt; color: #333; margin-top: 1px; }
+
+    @media print {
+      body { padding: 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>John Clemente</h1>
+    <div class="contact">
+      908-578-8356
+      <span>·</span>
+      <a href="mailto:johnclemente32@gmail.com">johnclemente32@gmail.com</a>
+      <span>·</span>
+      <a href="https://github.com/johnclemente">github.com/johnclemente</a>
+      <span>·</span>
+      <a href="https://johnclemente.com">johnclemente.com</a>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <p style="font-size:9.5pt; color:#333; line-height:1.4;">
+      Software Engineer with a broad background spanning full stack development, AI/ML systems architecture,
+      cybersecurity, and automation. Experienced in owning product development cycles end-to-end — from
+      infrastructure and reliability to feature delivery and customer success. Comfortable leading engineering
+      teams, collaborating cross-functionally, and operating at the intersection of technical depth and
+      business impact. Holds CompTIA Security+, Network+, and A+ certifications.
+    </p>
+  </div>
+
+  <hr class="light" />
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-item">Python / Django</div>
+      <div class="skill-item">JavaScript / Tailwind CSS</div>
+      <div class="skill-item">PostgreSQL</div>
+      <div class="skill-item">AWS (Cloud Infrastructure)</div>
+      <div class="skill-item">PowerShell / Bash</div>
+      <div class="skill-item">TCP/IP · DNS · DHCP</div>
+      <div class="skill-item">Active Directory / Entra ID</div>
+      <div class="skill-item">Azure / VMware</div>
+      <div class="skill-item">MDM / Intune</div>
+      <div class="skill-item">Fortinet / VPN / Firewalls</div>
+      <div class="skill-item">Git / Version Control</div>
+      <div class="skill-item">Kali Linux / Pen Testing</div>
+    </div>
+  </div>
+
+  <hr class="light" />
+
+  <!-- PROFESSIONAL EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+
+    <!-- Ally Behavior Centers -->
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Ally Behavior Centers</span>
+        <span class="job-date">March 2026 – Present</span>
+      </div>
+      <div class="job-title">Full Stack Engineer · Vienna, VA</div>
+      <p class="note">Joining March 2026 — will be responsible for maintaining and building out the company's scheduling application and contributing across the full stack.</p>
+    </div>
+
+    <!-- Skipflo -->
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Skipflo</span>
+        <span class="job-date">February 2025 – February 2026</span>
+      </div>
+      <div class="job-title">AI/ML Systems Architect</div>
+      <ul>
+        <li>Owned the full development cycle — from platform uptime and reliability to scoping and shipping new features.</li>
+        <li>Led a team of engineers to deliver features for an AI-powered recruiting platform built on Python, Django, PostgreSQL, Tailwind CSS, and AWS.</li>
+        <li>Served as head of customer support, managing client relationships and translating business needs into technical requirements.</li>
+        <li>Acted as the primary point of contact between engineering and clients, ensuring consistent delivery and satisfaction.</li>
+      </ul>
+    </div>
+
+    <!-- FOCUS -->
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">FOCUS</span>
+        <span class="job-date">June 2022 – February 2025</span>
+      </div>
+      <div class="job-title">Infrastructure and Operations Specialist</div>
+      <ul>
+        <li>Managed network uptime, security, and hardening for 250+ on-site and 1,200+ remote employees.</li>
+        <li>Led anti-phishing training initiatives, improving employee resilience by 95.75% over four months.</li>
+        <li>Automated administrative tasks with Python and PowerShell, saving over 100 hours annually.</li>
+        <li>Administered firewall rules, VPN configurations, and network segmentation using Fortinet.</li>
+        <li>Migrated on-prem device management to MDM using Microsoft Intune.</li>
+      </ul>
+    </div>
+
+    <!-- Franciscan University -->
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Franciscan University of Steubenville – eLearning</span>
+        <span class="job-date">2017 – 2018</span>
+      </div>
+      <div class="job-title">Web Developer</div>
+      <ul>
+        <li>Built tools in JavaScript to enhance the university's online learning system.</li>
+        <li>Used Git for version control, ensuring consistent and secure code deployment.</li>
+        <li>Collaborated with professors of varying technical backgrounds to define and implement solutions.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="light" />
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Education &amp; Certifications</div>
+
+    <div class="edu-row">
+      <div class="edu-left">
+        <div class="school">Franciscan University of Steubenville</div>
+        <div class="degree">Bachelor of Science – Computer Information Science</div>
+        <div class="minor">Minors: Business Management &amp; Marketing</div>
+      </div>
+      <div class="edu-right">Fall 2016 – Spring 2018</div>
+    </div>
+
+    <div class="certs">
+      <div class="cert"><strong>CompTIA Security+</strong> · 2024</div>
+      <div class="cert"><strong>CompTIA Network+</strong> · 2023</div>
+      <div class="cert"><strong>CompTIA A+</strong> · 2022</div>
+    </div>
+  </div>
+
+  <hr class="light" />
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project">
+      <div class="project-name">Mailchimp Automation <span style="font-weight:400;color:#888;">· GitHub</span></div>
+      <div class="project-desc">Python script for batch audience management in Mailchimp — reduced manual workload and improved update accuracy.</div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">CTF Progress Tracker <span style="font-weight:400;color:#888;">· johnclemente.com</span></div>
+      <div class="project-desc">Ongoing capture-the-flag practice using Kali Linux, BurpSuite, Nmap, Bash, and Python. Documented with cheat sheets and writeups.</div>
+    </div>
+
+    <div class="project">
+      <div class="project-name">Game Development <span style="font-weight:400;color:#888;">· iOS · Android · itch.io</span></div>
+      <div class="project-desc">Shipped <em>Christmas Caper</em> on App Store &amp; Google Play. Top 10% GMTK Game Jam finisher with <em>Graviscape</em>. Multiple Ludum Dare &amp; game jam entries.</div>
+    </div>
+  </div>
+
+</body>
+</html>
