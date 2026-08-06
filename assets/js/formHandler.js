@@ -1,111 +1,100 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  push,
-  set,
-} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+/*
+ * Contact form → Neon contact_messages (insert-only anonymous role).
+ * Validation limits mirror the table's CHECK constraints.
+ */
+import { DATA_API_URL, isConfigured } from "./config.js";
 
-// Turns out this stuff isn't private...who knew?
-const firebaseConfig = {
-    apiKey: "AIzaSyDAlZPkdgsIAXGpx6NYMciYS3MGeD9uAC0",
-    authDomain: "johns-portfolio--1702339781998.firebaseapp.com",
-    projectId: "johns-portfolio--1702339781998",
-    storageBucket: "johns-portfolio--1702339781998.appspot.com",
-    messagingSenderId: "560668929507",
-    appId: "1:560668929507:web:54f3e35fde733e732784d6",
-    measurementId: "G-G43ZGCLD21",
-  };
-  
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app); // Use getDatabase to initialize
+const FALLBACK_EMAIL = "johnclemente32@gmail.com";
+const RATE_LIMIT_MS = 5000;
 
-let isSubmitting = false; // Flag to track submission status
-const submissionCooldown = 5000; // Cooldown period in milliseconds (e.g., 5 seconds)
+const form = document.getElementById("contactForm");
+const status = document.getElementById("contact-status");
+const submitBtn = document.getElementById("contact-submit");
 
-function rateLimitSubmission() {
-  if (isSubmitting) {
-    alert(`Please wait ${submissionCooldown / 1000} seconds before submitting again.`);
-    return false; // Prevent submission
+let lastSubmit = 0;
+
+function setStatus(message, kind) {
+  status.textContent = "";
+  status.className = "contact__status" + (kind ? ` is-${kind}` : "");
+  if (typeof message === "string") {
+    status.textContent = message;
+  } else {
+    status.append(...message);
   }
-
-  isSubmitting = true; // Set flag to true when submitting
-
-  // Disable the submit button
-  const submitButton = document.querySelector(".contact__button"); // Use class selector for your button
-  submitButton.disabled = true;
-
-  // Start the countdown timer
-  startCountdown();
-
-  // Re-enable the button after the cooldown
-  setTimeout(() => {
-    isSubmitting = false;
-    submitButton.disabled = false;
-  }, submissionCooldown);
-
-  return true; // Allow submission
 }
 
-function startCountdown() {
-  let timeLeft = submissionCooldown / 1000; // Convert to seconds
-  const countdownDisplay = document.createElement("div"); // Create a countdown display element
-  countdownDisplay.id = "countdownDisplay"; // Set the ID for styling or future reference
-  countdownDisplay.className = "countdown__display"; // Optional class for styling
-  document.querySelector(".contact__form").appendChild(countdownDisplay); // Add to the form
+function mailtoFallback(name, message) {
+  const link = document.createElement("a");
+  link.href = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(
+    "Portfolio contact from " + name
+  )}&body=${encodeURIComponent(message)}`;
+  link.textContent = "email me directly";
+  return ["Something went wrong sending your message — please ", link, " instead."];
+}
 
-  const interval = setInterval(() => {
-    if (timeLeft <= 0) {
-      clearInterval(interval);
-      countdownDisplay.textContent = ""; // Clear countdown when done
-      countdownDisplay.remove(); // Remove the countdown display
-    } else {
-      countdownDisplay.textContent = `Please wait ${timeLeft} seconds`;
-      timeLeft--;
+function validate(name, email, message) {
+  if (!name || name.length > 100) return "Please enter your name (up to 100 characters).";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)
+    return "Please enter a valid email address.";
+  if (!message) return "Please enter a message.";
+  if (message.length > 5000) return "Message is too long (5000 characters max).";
+  return null;
+}
+
+if (form) {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    /* Honeypot: bots fill the hidden field; pretend success and do nothing. */
+    if (form.website.value) {
+      form.reset();
+      setStatus("Thanks! Your message has been sent.", "success");
+      return;
     }
-  }, 1000);
-}
 
-// Handle form submission
-document.getElementById("contactForm").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the traditional form submission
+    const error = validate(name, email, message);
+    if (error) {
+      setStatus(error, "error");
+      return;
+    }
 
-  // Check if the rate limit allows submission
-  if (!rateLimitSubmission()) {
-    return; // Exit if submission is not allowed
-  }
+    const now = Date.now();
+    if (now - lastSubmit < RATE_LIMIT_MS) {
+      setStatus("Please wait a few seconds before sending again.", "error");
+      return;
+    }
 
-  // Get form values
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+    if (!isConfigured) {
+      setStatus(mailtoFallback(name, message), "error");
+      return;
+    }
 
-  // Validate input
-  if (!name || !email || !message) {
-    alert("All fields are required!");
-    return;
-  }
+    submitBtn.disabled = true;
+    setStatus("Sending…");
 
-   const newContactRef = push(ref(database, "contacts")); // Use push to generate a new reference
-    set(newContactRef, {
-      name: name,
-      email: email,
-      message: message,
-      timestamp: new Date().toISOString(),
-    })
-      .then(function () {
-        alert("Your message has been sent successfully!");
-        document.getElementById("contactForm").reset(); // Reset the form
-      })
-      .catch(function (error) {
-        console.error("Error saving to database: ", error);
-        alert(
-          "There was an error sending your message. Please try again later."
-        );
+    try {
+      const res = await fetch(`${DATA_API_URL}/contact_messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({ name, email, message }),
       });
 
-});
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-
-
+      lastSubmit = now;
+      form.reset();
+      setStatus("Thanks! Your message has been sent.", "success");
+    } catch {
+      setStatus(mailtoFallback(name, message), "error");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+}
