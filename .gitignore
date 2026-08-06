@@ -3,3 +3,4 @@
 assets/img/Screenshot*.png
 assets/img/*/Screenshot*.png
 assets/img/jawn-game-menu.png
+node_modules/
