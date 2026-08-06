@@ -270,11 +270,8 @@ button {
   letter-spacing: 0.05em;
   color: hsl(var(--hue), 30%, 98%);
   border-radius: var(--radius-lg);
-  background: linear-gradient(
-    140deg,
-    var(--color-accent-strong),
-    hsl(calc(var(--hue) + 40), 88%, 56%)
-  );
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
 }
 
@@ -625,11 +622,7 @@ textarea.contact__input {
 .footer {
   padding: var(--space-7) var(--space-5);
   text-align: center;
-  background: linear-gradient(
-    140deg,
-    hsl(var(--hue), 40%, 14%),
-    hsl(calc(var(--hue) + 30), 45%, 18%)
-  );
+  background-color: hsl(var(--hue), 28%, 10%);
   border-top: 1px solid var(--color-border);
 }
 
