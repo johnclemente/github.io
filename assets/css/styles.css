@@ -382,12 +382,6 @@ button {
   text-align: center;
 }
 
-.featured__visual--attwh {
-  background:
-    radial-gradient(ellipse at 20% 20%, hsla(var(--hue), 88%, 64%, 0.35), transparent 55%),
-    linear-gradient(140deg, hsl(var(--hue), 45%, 16%), hsl(calc(var(--hue) + 40), 50%, 22%));
-}
-
 .featured__visual--sched {
   font-size: 3rem;
   color: var(--color-accent);
@@ -396,15 +390,8 @@ button {
     var(--color-surface-raised);
 }
 
-.featured__visual-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: hsl(var(--hue), 30%, 98%);
-}
-
-.featured__visual-tagline {
-  font-size: var(--fs-small);
-  color: var(--color-text-muted);
+.card__img--wide {
+  aspect-ratio: auto;
 }
 
 .card__badge--live {
