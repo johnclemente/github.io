@@ -2,7 +2,7 @@
  * Contact form → Neon contact_messages (insert-only anonymous role).
  * Validation limits mirror the table's CHECK constraints.
  */
-import { DATA_API_URL, isConfigured } from "./config.js";
+import { insertRow, isConfigured } from "./neon.js";
 
 const FALLBACK_EMAIL = "johnclemente32@gmail.com";
 const RATE_LIMIT_MS = 5000;
@@ -77,16 +77,7 @@ if (form) {
     setStatus("Sending…");
 
     try {
-      const res = await fetch(`${DATA_API_URL}/contact_messages`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Prefer: "return=minimal",
-        },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await insertRow("contact_messages", { name, email, message });
 
       lastSubmit = now;
       form.reset();

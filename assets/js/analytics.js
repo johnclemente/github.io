@@ -3,7 +3,7 @@
  * No cookies, no IP capture; timezone/language serve as a coarse geo proxy.
  * Skips localhost and visitors with Do Not Track / Global Privacy Control.
  */
-import { DATA_API_URL, isConfigured } from "./config.js";
+import { insertRow, isConfigured } from "./neon.js";
 
 const isLocal = ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
 const optedOut =
@@ -19,26 +19,20 @@ function sessionId() {
 }
 
 if (isConfigured && !isLocal && !optedOut) {
-  try {
-    fetch(`${DATA_API_URL}/page_views`, {
-      method: "POST",
-      keepalive: true,
-      headers: {
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
-      body: JSON.stringify({
-        path: (location.pathname + location.hash).slice(0, 200),
-        referrer: document.referrer.slice(0, 500) || null,
-        user_agent: navigator.userAgent.slice(0, 400),
-        viewport_w: window.innerWidth,
-        viewport_h: window.innerHeight,
-        language: navigator.language,
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        session_id: sessionId(),
-      }),
-    }).catch(() => {});
-  } catch {
+  insertRow(
+    "page_views",
+    {
+      path: (location.pathname + location.hash).slice(0, 200),
+      referrer: document.referrer.slice(0, 500) || null,
+      user_agent: navigator.userAgent.slice(0, 400),
+      viewport_w: window.innerWidth,
+      viewport_h: window.innerHeight,
+      language: navigator.language,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      session_id: sessionId(),
+    },
+    { keepalive: true }
+  ).catch(() => {
     /* analytics must never break the page */
-  }
+  });
 }
