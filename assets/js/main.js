@@ -109,9 +109,14 @@ if (reducedMotion || !("IntersectionObserver" in window)) {
 }
 
 /*===== HIDDEN GEM =====*/
-const x = "eW91cl9j";
-const y = "b3JyZWN0";
-const z = "X2ZsYWc=";
+console.log(
+  "%cCurious? There's a flag hiding in this site. Submit with attempt(\"...\")",
+  "color:#5b8aff"
+);
+
+const x = "amF3bnt3aGF0X3lv";
+const y = "dV9kb190b2RheV9t";
+const z = "YXR0ZXJzfQ==";
 
 const sol = atob(x) + atob(y) + atob(z);
 
