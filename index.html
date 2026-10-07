@@ -2,18 +2,24 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- The theme before first paint, so a dark reader never sees a flash of the pale ground. -->
+  <script>(function(){var r=document.documentElement,s=null;try{s=localStorage.getItem("theme")}catch(e){}r.dataset.theme=s==="light"||s==="dark"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");})();</script>
+  <title>john clemente: full stack engineer</title>
   <meta name="description"
-    content="John Clemente — Full Stack Engineer at Ally Behavior Centers, passionate about AI, cybersecurity, automation, and game development." />
+    content="John Clemente is a full stack engineer at Ally Behavior Centers. Web apps, automation, security tooling and the occasional game." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="John Clemente" />
   <link rel="canonical" href="https://www.johnclemente.com/" />
+  <meta name="theme-color" content="#f5f6f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#131518" media="(prefers-color-scheme: dark)" />
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="John Clemente — Full Stack Engineer" />
+  <meta property="og:site_name" content="johnclemente.com" />
+  <meta property="og:title" content="john clemente: full stack engineer" />
   <meta property="og:description"
-    content="Portfolio covering AI, cybersecurity, automation, and game development." />
+    content="Web apps, automation, security tooling and the occasional game." />
   <meta property="og:url" content="https://www.johnclemente.com/" />
   <meta property="og:image" content="https://www.johnclemente.com/assets/img/about.jpg" />
   <meta name="twitter:card" content="summary" />
@@ -21,332 +27,449 @@
   <link rel="icon" type="image/png" href="/assets/img/favicon.png?v=3" />
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet" />
-
-  <!-- Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <title>John Clemente — Full Stack Engineer</title>
+  <!-- ascii.rest by @bas3line (MIT), vendored in assets/vendor/ascii: defines <ascii-art>. -->
+  <script type="module" src="assets/vendor/ascii/ascii.js"></script>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip" href="#main">skip to content</a>
 
-  <!--===== HEADER =====-->
-  <header class="l-header" id="header">
-    <nav class="nav container" aria-label="Main">
-      <a href="#home" class="nav__logo">John Clemente</a>
+  <div class="frame">
+    <aside class="side">
+      <a class="home" href="#top">john clemente</a>
+      <p class="by">full stack engineer</p>
 
-      <button type="button" class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu"
-        aria-label="Toggle menu">
-        <i class="bx bx-menu" aria-hidden="true"></i>
-      </button>
+      <nav aria-label="Sections">
+        <h2><a href="#projects">work</a></h2>
 
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-          <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-          <li class="nav__item"><a href="#games" class="nav__link">Games</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        <h3><a href="#projects">projects</a><span class="count">7</span></h3>
+        <ul role="list">
+          <li><a href="#attwh">all that we have</a></li>
+          <li><a href="#jawn">jawn.games</a></li>
+          <li><a href="#scheduling">scheduling app</a></li>
+          <li><a href="#ctf">ctf tracker</a></li>
+          <li><a href="#mailchimp">mailchimp automations</a></li>
+          <li><a href="#cheatsheets">security cheat sheets</a></li>
+          <li><a href="#gcp-forms">forms on gcp</a></li>
         </ul>
-      </div>
-    </nav>
-  </header>
 
-  <main class="l-main" id="main">
-    <!--===== HOME =====-->
-    <section class="home section container" id="home">
-      <div class="home__data">
-        <p class="home__monogram" aria-hidden="true">JC</p>
+        <h3><a href="#games">games</a><span class="count">6</span></h3>
+        <ul role="list">
+          <li><a href="#christmas-caper">christmas caper</a></li>
+          <li><a href="#graviscape">graviscape</a></li>
+          <li><a href="#rendezvous">rendezvous</a></li>
+          <li><a href="#human-resources">human resources</a></li>
+          <li><a href="#dot-trail">dot trail</a></li>
+          <li><a href="#fuddle">fuddle</a></li>
+        </ul>
 
-        <h1 class="home__title">Hi 👋 I'm <span class="accent">John</span></h1>
-        <p class="home__tagline">I build software people actually use — web apps, automations, and the systems
-          behind them.</p>
+        <h2><a href="#about">me</a></h2>
+        <h3><a href="#about">about</a></h3>
+        <h3><a href="#stack">stack</a><span class="count">6</span></h3>
+        <h3><a href="#contact">contact</a></h3>
 
-        <p class="home__typing" aria-hidden="true">
-          let's talk about <span class="accent home__typing-word"></span>
-        </p>
+        <h2><a href="#elsewhere">elsewhere</a></h2>
+        <ul role="list" id="elsewhere">
+          <li><a href="https://github.com/johnclemente" rel="me">github</a></li>
+          <li><a href="https://www.linkedin.com/in/john-clemente-554826114/" rel="me">linkedin</a></li>
+          <li><a href="https://johnclemente.itch.io/" rel="me">itch.io</a></li>
+          <li><a href="assets/JohnClementeResume.pdf" download>resume</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-        <div class="home__role">
-          <p class="home__role-company"><i class="bx bx-briefcase" aria-hidden="true"></i> Ally Behavior Centers</p>
-          <p class="home__role-title">Full Stack Engineer</p>
-        </div>
-
-        <div class="home__social">
-          <a href="https://www.linkedin.com/in/john-clemente-554826114/" class="home__social-icon"
-            aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
-          <a href="https://github.com/johnclemente" class="home__social-icon" aria-label="GitHub"><i
-              class="bx bxl-github" aria-hidden="true"></i></a>
-          <a href="https://johnclemente.itch.io/" class="home__social-icon" aria-label="itch.io"><i
-              class="bx bxl-unity" aria-hidden="true"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!--===== PROJECTS =====-->
-    <section class="work section container" id="work">
-      <h2 class="section__title">Projects</h2>
-      <p class="section__subtitle">Things I've built and shipped.</p>
-
-      <div class="featured__grid">
-        <a class="card card--featured reveal" href="https://allthatwehave.com" target="_blank"
-          rel="noopener noreferrer">
-          <span class="card__badge card__badge--live">Live</span>
-          <picture>
-            <source srcset="assets/img/attwh-dashboard.webp" type="image/webp" />
-            <img src="assets/img/attwh-dashboard.jpg" class="card__img card__img--wide"
-              alt="All That We Have dashboard: a daily habit checklist beside a monthly progress grid" width="1200"
-              height="569" loading="lazy" />
-          </picture>
-          <div class="card__body">
-            <h3 class="card__title">All That We Have</h3>
-            <p class="card__description">A habit tracker built around a simple idea: what you do today matters.
-              Daily streaks, a monthly grid, and a memento-mori view of your life in weeks.</p>
-            <span class="card__meta">allthatwehave.com</span>
-          </div>
-        </a>
-
-        <a class="card card--featured reveal" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
-          <span class="card__badge card__badge--live">Live</span>
-          <picture>
-            <source srcset="assets/img/jawn-games.webp" type="image/webp" />
-            <img src="assets/img/jawn-games.jpg" class="card__img card__img--wide"
-              alt="jawn.games homepage: Games you can actually just play — free, browser, no download" width="1200"
-              height="569" loading="lazy" />
-          </picture>
-          <div class="card__body">
-            <h3 class="card__title">jawn.games</h3>
-            <p class="card__description">A collection of free browser games — puzzles, word games, and multiplayer
-              party games. No installs; open a tab and start.</p>
-            <span class="card__meta">jawn.games</span>
-          </div>
-        </a>
-
-        <div class="card card--featured reveal">
-          <span class="card__badge">In the works</span>
-          <div class="featured__visual featured__visual--sched" aria-hidden="true">
-            <i class="bx bx-calendar-event"></i>
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">Scheduling App</h3>
-            <p class="card__description">Currently building a scheduling app — engineering notes and write-ups on
-              the interesting parts coming soon.</p>
-            <span class="card__meta">Coming soon</span>
-          </div>
-        </div>
+    <main class="page" id="main">
+      <div class="top" id="top">
+        <h1>hi, i'm john</h1>
+        <span class="tools">
+          <button id="motion" class="button" type="button" hidden><span>[play anyway]</span></button>
+          <a href="assets/JohnClementeResume.pdf" download>[resume]</a>
+          <button id="theme" class="button" type="button" aria-label="Switch to dark theme" hidden><span>[dark]</span></button>
+        </span>
       </div>
 
-      <h3 class="work__subheading">More projects</h3>
-      <div class="work__grid">
-        <a class="card reveal" href="https://capable-sovereign-5bd.notion.site/CTF-94ddc03691d84b76b804a873fb110654?pvs=4"
-          target="_blank" rel="noopener noreferrer">
-          <img src="assets/img/Cards/ctf.png" alt="" class="card__img" width="800" height="800" loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">CTF Progress Tracker</h3>
-            <p class="card__description">Tracking my Capture The Flag progress, write-ups included.</p>
-            <span class="card__meta">Notion</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://github.com/johnclemente/MailchimpAutomations" target="_blank"
-          rel="noopener noreferrer">
-          <img src="assets/img/Cards/chimp.png" alt="" class="card__img" width="800" height="800" loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Mailchimp Automations</h3>
-            <p class="card__description">Update audiences quickly with scripted Mailchimp workflows.</p>
-            <span class="card__meta">GitHub</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://www.notion.so/CTF-94ddc03691d84b76b804a873fb110654" target="_blank"
-          rel="noopener noreferrer">
-          <img src="assets/img/Cards/Hands.png" alt="" class="card__img" width="800" height="800" loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Security Cheat Sheets</h3>
-            <p class="card__description">Reference notes and cheat sheets for security tooling.</p>
-            <span class="card__meta">Notion</span>
-          </div>
-        </a>
-
-        <a class="card reveal"
-          href="https://capable-sovereign-5bd.notion.site/GCP-project-Firebase-backend-c0e43f7ddd724c41851d250af303d7c8?pvs=74"
-          target="_blank" rel="noopener noreferrer">
-          <img src="assets/img/Cards/fileLock.png" alt="" class="card__img" width="800" height="800" loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Form Validation &amp; GCP Backend</h3>
-            <p class="card__description">Secure form validation backed by GCP and Firebase.</p>
-            <span class="card__meta">Notion</span>
-          </div>
-        </a>
+      <!--
+        The hero: one of ascii.rest's full-colour scenes, a different one each visit
+        (main.js picks from data-scenes). Party mode swaps it for fireworks.
+      -->
+      <div class="well scene hero" id="hero">
+        <ascii-art piece="night-coast" style="--cols: 200; --rows: 100" data-party="fireworks"
+          data-scenes="night-coast desert-night earthrise aurora-fjord misty-forest ocean-sunset marine-drive"
+          label="a lighthouse turning its beam under moonlit clouds over a dark sea"></ascii-art>
       </div>
-    </section>
+      <p class="caption muted">
+        <span id="scene-name">night coast</span>: <span id="scene-note">a lighthouse turning its beam under moonlit
+          clouds over a dark sea</span>
+        <span class="tools">
+          <a id="scene-link" href="https://ascii.rest/night-coast/">[on ascii.rest]</a>
+          <button id="scene-next" class="button" type="button" hidden><span>[another]</span></button>
+        </span>
+      </p>
 
-    <!--===== ABOUT =====-->
-    <section class="about section container" id="about">
-      <h2 class="section__title">About</h2>
+      <p class="pitch">
+        I'm a full stack engineer at Ally Behavior Centers. I build software people actually use: web apps,
+        automations, and the systems behind them. Before this I ran engineering on an AI recruiting platform and
+        kept the network up for 1,400+ people, which is where the security habit comes from.
+      </p>
 
-      <div class="about__container">
-        <div class="about__img reveal">
-          <picture>
-            <source srcset="assets/img/about.webp" type="image/webp" />
-            <img src="assets/img/about.jpg" alt="John Clemente at his desk, ready to automate something" width="420"
-              height="420" loading="lazy" />
-          </picture>
+      <div class="line">
+        <ascii-art piece="typewriter" style="--cols: 44; --rows: 3"
+          options='{"prefix":"let&#39;s talk about ","phrases":["python.","automation.","security.","ml.","your pipeline.","why leetcode?","vibe coding.","the singularity."]}'
+          label="let's talk about python, automation, security, ml, your pipeline, why leetcode, vibe coding, the singularity"></ascii-art>
+      </div>
+
+      <!--===== PROJECTS =====-->
+      <section id="projects">
+        <div class="head">
+          <h2>projects</h2>
+          <span class="count">7</span>
         </div>
 
-        <div class="about__data reveal">
-          <h3 class="about__subtitle">Let's talk</h3>
-          <p class="about__text">
-            I'm a full stack engineer who likes shipping — web apps, automation, security tooling, and the
-            occasional game.
-          </p>
-          <p class="about__text">
-            Let's connect if you're looking for collaboration, advice, or just to chat about the latest trends —
-            I'm here to help.
-          </p>
-          <a href="assets/JohnClementeResume.pdf" class="button" download>
-            <i class="bx bx-download" aria-hidden="true"></i> Download Resume
+        <div class="grid wide">
+          <a class="card" id="attwh" href="https://allthatwehave.com" target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="heatmap" style="--cols: 66; --rows: 12" options='{"unit":"habits kept","seed":3}'
+                label="a habit heatmap filling in day by day"></ascii-art>
+            </div>
+            <span class="name">all that we have</span>
+            <span class="note">A habit tracker built around a simple idea: what you do today matters. Daily streaks,
+              a monthly grid, and a memento-mori view of your life in weeks.</span>
+            <span class="meta">allthatwehave.com · live</span>
+          </a>
+
+          <a class="card" id="jawn" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="bouncing-balls" style="--cols: 64; --rows: 22" options='{"balls":5}' fps="20"
+                label="balls bouncing around a box"></ascii-art>
+            </div>
+            <span class="name">jawn.games</span>
+            <span class="note">Free browser games: puzzles, word games, and multiplayer party games. No installs;
+              open a tab and start.</span>
+            <span class="meta">jawn.games · live</span>
+          </a>
+
+          <div class="card" id="scheduling">
+            <div class="well">
+              <ascii-art piece="calendar" style="--cols: 32; --rows: 13" label="this month's calendar, today bracketed, the time ticking below"></ascii-art>
+            </div>
+            <span class="name">scheduling app</span>
+            <span class="note">Building out the scheduling application at Ally Behavior Centers. Engineering notes
+              on the interesting parts coming soon.</span>
+            <span class="meta">in the works</span>
+          </div>
+        </div>
+
+        <div class="head">
+          <h3>more</h3>
+        </div>
+
+        <div class="grid">
+          <a class="card" id="ctf"
+            href="https://capable-sovereign-5bd.notion.site/CTF-94ddc03691d84b76b804a873fb110654?pvs=4"
+            target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="matrix-rain" style="--cols: 63; --rows: 24" label="streams of glyphs falling like rain"></ascii-art>
+            </div>
+            <span class="name">ctf progress tracker</span>
+            <span class="note">Capture-the-flag practice with Kali, Burp, Nmap, Bash and Python, with write-ups.</span>
+            <span class="meta">notion</span>
+          </a>
+
+          <a class="card" id="mailchimp" href="https://github.com/johnclemente/MailchimpAutomations" target="_blank"
+            rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="progress-bar" style="--cols: 48; --rows: 11" fps="20"
+                options='{"labels":["fetching","matching","tagging","syncing","sending"]}'
+                label="progress bars filling at their own pace"></ascii-art>
+            </div>
+            <span class="name">mailchimp automations</span>
+            <span class="note">Python scripts for batch audience management: fewer manual updates, fewer mistakes.</span>
+            <span class="meta">github</span>
+          </a>
+
+          <a class="card" id="cheatsheets" href="https://www.notion.so/CTF-94ddc03691d84b76b804a873fb110654"
+            target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="file-tree" style="--cols: 36; --rows: 23"
+                options='{"root":"cheatsheets/","entries":"recon/\n  nmap.md\n  gobuster.md\nweb/\n  burp.md\n  sqli.md\n  xss.md\nlinux/\n  privesc.md\n  shells.md\nwindows/\n  active-directory.md\n  powershell.md\nREADME.md"}'
+                label="a folder of cheat sheets opening and closing"></ascii-art>
+            </div>
+            <span class="name">security cheat sheets</span>
+            <span class="note">Reference notes for the tooling I reach for most.</span>
+            <span class="meta">notion</span>
+          </a>
+
+          <a class="card" id="gcp-forms"
+            href="https://capable-sovereign-5bd.notion.site/GCP-project-Firebase-backend-c0e43f7ddd724c41851d250af303d7c8?pvs=74"
+            target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="form-controls" style="--cols: 54; --rows: 16" options='{"title":"sign up"}'
+                label="a terminal style form being filled in"></ascii-art>
+            </div>
+            <span class="name">form validation on gcp</span>
+            <span class="note">Secure form validation backed by Cloud Functions and Firebase.</span>
+            <span class="meta">notion</span>
           </a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!--===== GAMES =====-->
-    <section class="work section container" id="games">
-      <h2 class="section__title">Games I've Developed</h2>
-      <p class="section__subtitle">Jam entries and mobile releases — a side passion.</p>
+      <!--===== GAMES =====-->
+      <section id="games">
+        <div class="head">
+          <h2>games</h2>
+          <span class="count">6</span>
+        </div>
+        <p class="lede muted">Jam entries and mobile releases. A side passion.</p>
 
-      <div class="work__grid work__grid--compact">
-        <a class="card reveal" href="https://apps.apple.com/az/app/christmas-caper/id6472870752" target="_blank"
-          rel="noopener noreferrer">
-          <img src="assets/img/Cards/clementeChristmas.png" alt="" class="card__img" width="800" height="800"
-            loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Christmas Caper</h3>
-            <p class="card__description">A free mobile game for iOS and Android.</p>
-            <span class="card__meta">App Store</span>
+        <div class="grid" style="margin-top: 1.5rem">
+          <a class="card" id="christmas-caper" href="https://apps.apple.com/az/app/christmas-caper/id6472870752"
+            target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="snowfall" style="--cols: 64; --rows: 22" label="snow falling"></ascii-art>
+            </div>
+            <span class="name">christmas caper</span>
+            <span class="note">A free mobile game for iOS and Android.</span>
+            <span class="meta">app store · google play</span>
+          </a>
+
+          <a class="card" id="graviscape" href="https://johnclemente.itch.io" target="_blank"
+            rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="black-hole" style="--cols: 64; --rows: 20" label="matter spiralling into a black hole"></ascii-art>
+            </div>
+            <span class="name">graviscape</span>
+            <span class="note">A gravity-based puzzle game. Top 10% finisher.</span>
+            <span class="meta">gmtk game jam</span>
+          </a>
+
+          <a class="card" id="rendezvous" href="https://johnclemente.itch.io/" target="_blank"
+            rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="candle" style="--cols: 40; --rows: 30" label="a candle burning"></ascii-art>
+            </div>
+            <span class="name">rendezvous</span>
+            <span class="note">A summoning-themed jam entry.</span>
+            <span class="meta">ludum dare 55</span>
+          </a>
+
+          <a class="card" id="human-resources" href="https://johnclemente.itch.io/" target="_blank"
+            rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="coffee" style="--cols: 52; --rows: 24" label="a steaming cup of coffee"></ascii-art>
+            </div>
+            <span class="name">human resources</span>
+            <span class="note">A game about escaping work.</span>
+            <span class="meta">mini jame gam 27</span>
+          </a>
+
+          <a class="card" id="dot-trail" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="maze" style="--cols: 61; --rows: 21" label="a maze being drawn and solved"></ascii-art>
+            </div>
+            <span class="name">dot trail</span>
+            <span class="note">A pattern-puzzle game with 127+ levels, playable free in the browser.</span>
+            <span class="meta">jawn.games</span>
+          </a>
+
+          <a class="card" id="fuddle" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
+            <div class="well">
+              <ascii-art piece="dissolve" style="--cols: 64; --rows: 13"
+                options='{"words":["fuddle","tiles","words","daily"]}' label="words dissolving into one another"></ascii-art>
+            </div>
+            <span class="name">fuddle</span>
+            <span class="note">A cozy word-tile puzzle: 175 crosswords plus a daily challenge.</span>
+            <span class="meta">jawn.games</span>
+          </a>
+        </div>
+      </section>
+
+      <!--===== ABOUT =====-->
+      <section id="about">
+        <div class="head">
+          <h2>about</h2>
+        </div>
+
+        <div class="split">
+        <div>
+        <div class="prose">
+          <p>
+            I'm a full stack engineer at <a href="https://allybehavior.com" target="_blank"
+              rel="noopener noreferrer">Ally Behavior Centers</a>, where I work on the company's scheduling
+            application and whatever else the stack needs. Before that I was the AI/ML systems architect at
+            Skipflo, leading a small team on an AI recruiting platform (Python, Django, PostgreSQL, AWS) and
+            owning everything from uptime to customer support. Before that I ran infrastructure and security for
+            FOCUS: 250 people on site, 1,200 remote, and a phishing-training program that cut click rates by 95%.
+          </p>
+          <p>
+            I like shipping. Web apps, automation, security tooling, and the occasional game. If you're looking
+            for collaboration, advice, or just want to talk shop, <a href="#contact">say hi</a>.
+          </p>
+        </div>
+
+        <dl class="jobs">
+          <dt>ally behavior centers</dt>
+          <dd>full stack engineer</dd>
+          <dd class="when">2026 –</dd>
+
+          <dt>skipflo</dt>
+          <dd>ai/ml systems architect</dd>
+          <dd class="when">2025 – 2026</dd>
+
+          <dt>focus</dt>
+          <dd>infrastructure &amp; operations</dd>
+          <dd class="when">2022 – 2025</dd>
+
+          <dt>franciscan university</dt>
+          <dd>web developer, elearning</dd>
+          <dd class="when">2017 – 2018</dd>
+        </dl>
+
+        <p class="facts">
+          <span>b.s. computer information science</span>
+          <span>comptia security+</span>
+          <span>network+</span>
+          <span>a+</span>
+        </p>
+        </div>
+
+        <!-- Drawn for the reader's own hour and tonight's real moon. -->
+        <figure class="aside">
+          <div class="well wide">
+            <ascii-art piece="landscape" style="--cols: 64; --rows: 18"
+              label="a mountain range and a lake under the sun or moon of your local hour"></ascii-art>
           </div>
-        </a>
+          <figcaption class="muted">wherever you are, it's this time of day there. the moon is tonight's.</figcaption>
+        </figure>
+        </div>
+      </section>
 
-        <a class="card reveal" href="https://johnclemente.itch.io" target="_blank" rel="noopener noreferrer">
-          <span class="card__badge">Top 10% finisher</span>
-          <img src="assets/img/Cards/Title.png" alt="" class="card__img" width="800" height="800" loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Graviscape</h3>
-            <p class="card__description">A gravity-based puzzle game.</p>
-            <span class="card__meta">GMTK Game Jam</span>
-          </div>
-        </a>
+      <!--===== STACK =====-->
+      <section id="stack">
+        <div class="head">
+          <h2>stack</h2>
+          <span class="count">6</span>
+          <span class="tools">
+            <button class="button" type="button" id="ink" hidden><span>[mono]</span></button>
+          </span>
+        </div>
 
-        <a class="card reveal" href="https://johnclemente.itch.io/" target="_blank" rel="noopener noreferrer">
-          <img src="assets/img/Cards/RendezvousTitleScreen.png" alt="" class="card__img" width="800" height="800"
-            loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Rendezvous</h3>
-            <p class="card__description">A summoning-themed game jam entry.</p>
-            <span class="card__meta">Ludum Dare 55</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://johnclemente.itch.io/" target="_blank" rel="noopener noreferrer">
-          <img src="assets/img/Cards/HumanResources.png" alt="" class="card__img" width="800" height="800"
-            loading="lazy" />
-          <div class="card__body">
-            <h3 class="card__title">Human Resources</h3>
-            <p class="card__description">A game about escaping work.</p>
-            <span class="card__meta">Mini Jame Gam 27</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
-          <picture>
-            <source srcset="assets/img/Cards/dottrail.webp" type="image/webp" />
-            <img src="assets/img/Cards/dottrail.jpg" alt="" class="card__img" width="800" height="600"
-              loading="lazy" />
-          </picture>
-          <div class="card__body">
-            <h3 class="card__title">Dot Trail</h3>
-            <p class="card__description">A pattern-puzzle game with 127+ levels — now playable free in the
-              browser.</p>
-            <span class="card__meta">jawn.games</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
-          <picture>
-            <source srcset="assets/img/Cards/fuddle.webp" type="image/webp" />
-            <img src="assets/img/Cards/fuddle.jpg" alt="" class="card__img" width="800" height="600"
-              loading="lazy" />
-          </picture>
-          <div class="card__body">
-            <h3 class="card__title">Fuddle</h3>
-            <p class="card__description">A cozy word-tile puzzle — 175 crosswords plus a daily challenge.</p>
-            <span class="card__meta">jawn.games</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!--===== CONTACT =====-->
-    <section class="contact section container" id="contact">
-      <h2 class="section__title">Contact</h2>
-      <p class="section__subtitle">Have a project in mind, or just want to talk shop? I'll get back to you
-        quickly.</p>
-
-      <div class="contact__container">
-        <form id="contactForm" class="contact__form" novalidate>
-          <div class="contact__field">
-            <label for="name" class="contact__label">Name</label>
-            <input type="text" id="name" name="name" class="contact__input" autocomplete="name" maxlength="100"
-              required />
+        <div class="grid">
+          <div class="card">
+            <div class="well">
+              <ascii-art class="logo" piece="python" style="--cols: 51; --rows: 28" fps="20" label="the python logo"></ascii-art>
+            </div>
+            <span class="name">python</span>
+            <span class="note">django, automation, the glue for everything</span>
           </div>
 
-          <div class="contact__field">
-            <label for="email" class="contact__label">Email</label>
-            <input type="email" id="email" name="email" class="contact__input" autocomplete="email" maxlength="254"
-              required />
+          <div class="card">
+            <div class="well">
+              <ascii-art class="logo" piece="javascript" style="--cols: 56; --rows: 28" fps="20" label="the javascript logo"></ascii-art>
+            </div>
+            <span class="name">javascript</span>
+            <span class="note">this site, the games, the front of most things</span>
           </div>
 
-          <div class="contact__field">
-            <label for="message" class="contact__label">Message</label>
-            <textarea id="message" name="message" rows="8" class="contact__input" maxlength="5000" required></textarea>
+          <div class="card">
+            <div class="well">
+              <ascii-art class="logo" piece="csharp" style="--cols: 49; --rows: 28" fps="20" label="the c sharp logo"></ascii-art>
+            </div>
+            <span class="name">c#</span>
+            <span class="note">unity, for the jam games and christmas caper</span>
+          </div>
+
+          <div class="card">
+            <div class="well">
+              <ascii-art class="logo" piece="html" style="--cols: 50; --rows: 28" fps="20" label="the html5 logo"></ascii-art>
+            </div>
+            <span class="name">html</span>
+            <span class="note">still the best deploy target there is</span>
+          </div>
+
+          <div class="card">
+            <div class="well">
+              <ascii-art class="logo" piece="css" style="--cols: 50; --rows: 28" fps="20" label="the css logo"></ascii-art>
+            </div>
+            <span class="name">css</span>
+            <span class="note">tailwind at work, hand-written here</span>
+          </div>
+
+          <div class="card">
+            <div class="well">
+              <ascii-art class="logo" piece="kali-linux" style="--cols: 71; --rows: 27" fps="20" label="the kali linux logo"></ascii-art>
+            </div>
+            <span class="name">kali linux</span>
+            <span class="note">pen testing, ctfs, and the cheat sheets above</span>
+          </div>
+        </div>
+        <p class="facts" style="margin-top: 2rem">
+          <span>postgresql</span><span>aws</span><span>azure</span><span>powershell / bash</span><span>fortinet</span><span>intune</span><span>git</span>
+        </p>
+      </section>
+
+      <!--===== CONTACT =====-->
+      <section id="contact">
+        <div class="head">
+          <h2>contact</h2>
+        </div>
+        <p class="lede muted">Have a project in mind, or just want to talk shop? I'll get back to you quickly.</p>
+
+        <div class="split">
+        <form id="contactForm" class="form" novalidate>
+          <div class="field">
+            <label for="name">name</label>
+            <input type="text" id="name" name="name" autocomplete="name" maxlength="100" required />
+          </div>
+
+          <div class="field">
+            <label for="email">email</label>
+            <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required />
+          </div>
+
+          <div class="field">
+            <label for="message">message</label>
+            <textarea id="message" name="message" rows="8" maxlength="5000" required></textarea>
           </div>
 
           <!-- Honeypot: real visitors never see or fill this. -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="website">Website</label>
+          <div class="hp" aria-hidden="true">
+            <label for="website">website</label>
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
           </div>
 
-          <button type="submit" class="button contact__button" id="contact-submit">Send</button>
-          <p class="contact__status" id="contact-status" role="status" aria-live="polite"></p>
+          <div class="send">
+            <button type="submit" class="button" id="contact-submit"><span>[send]</span></button>
+            <p class="status" id="contact-status" role="status" aria-live="polite"></p>
+          </div>
         </form>
+
+        <figure class="aside">
+          <div class="well wide">
+            <ascii-art piece="morse" style="--cols: 64; --rows: 19" options='{"text":"say hi"}'
+              label="a lamp keying 'say hi' in morse code"></ascii-art>
+          </div>
+        </figure>
+        </div>
+      </section>
+
+      <div class="line centre">
+        <ascii-art piece="wave-text" style="--cols: 36; --rows: 5" fps="12"
+          options='{"text":"thanks for scrolling"}' label="thanks for scrolling"></ascii-art>
       </div>
-    </section>
-  </main>
 
-  <!--===== FOOTER =====-->
-  <footer class="footer">
-    <p class="footer__title">John Clemente</p>
-    <div class="footer__social">
-      <a href="https://www.linkedin.com/in/john-clemente-554826114/" class="footer__icon" aria-label="LinkedIn"><i
-          class="bx bxl-linkedin" aria-hidden="true"></i></a>
-      <a href="https://github.com/johnclemente" class="footer__icon" aria-label="GitHub"><i class="bx bxl-github"
-          aria-hidden="true"></i></a>
-      <a href="https://johnclemente.itch.io/" class="footer__icon" aria-label="itch.io"><i class="bx bxl-unity"
-          aria-hidden="true"></i></a>
-    </div>
-  </footer>
+      <footer class="foot muted">
+        <span>john clemente · <a href="https://github.com/johnclemente/github.io">source</a></span>
+        <span>art by <a href="https://ascii.rest">ascii.rest</a>, @bas3line, mit</span>
+      </footer>
+    </main>
+  </div>
 
-  <!--===== SCRIPTS =====-->
   <script type="module" src="assets/js/main.js"></script>
   <script type="module" src="assets/js/formHandler.js"></script>
   <script type="module" src="assets/js/analytics.js"></script>

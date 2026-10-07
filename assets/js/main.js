@@ -1,117 +1,185 @@
-/* Enables .reveal animations — without JS the content stays visible (see styles.css) */
-document.documentElement.classList.add("js");
+/*
+ * The page's own behaviour: the theme switch, the reduced-motion override,
+ * the [mono] switch for the logos, the sidebar following the scroll, and the
+ * hidden flag. The art itself is ascii.rest's <ascii-art> element, loaded in
+ * the head; this file only talks to it through its attributes.
+ */
 
-/*===== MENU SHOW / HIDE =====*/
-const navToggle = document.getElementById("nav-toggle");
-const navMenu = document.getElementById("nav-menu");
+const root = document.documentElement;
+const art = () => document.querySelectorAll("ascii-art");
 
-if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    const open = navMenu.classList.toggle("show");
-    navToggle.setAttribute("aria-expanded", String(open));
+/*===== THEME: [dark] / [light] =====*/
+const themeButton = document.getElementById("theme");
+const bars = document.querySelectorAll('meta[name="theme-color"]');
+
+function savedTheme() {
+  try {
+    const s = localStorage.getItem("theme");
+    return s === "light" || s === "dark" ? s : null;
+  } catch {
+    return null;
+  }
+}
+
+function showTheme(theme) {
+  const next = theme === "dark" ? "light" : "dark";
+  root.dataset.theme = theme;
+  themeButton.firstElementChild.textContent = `[${next}]`;
+  themeButton.setAttribute("aria-label", `Switch to ${next} theme`);
+  bars.forEach((meta) => meta.setAttribute("content", theme === "dark" ? "#131518" : "#f5f6f7"));
+}
+
+if (themeButton) {
+  showTheme(root.dataset.theme === "dark" ? "dark" : "light");
+  themeButton.hidden = false;
+  themeButton.addEventListener("click", () => {
+    const theme = root.dataset.theme === "dark" ? "light" : "dark";
+    showTheme(theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      /* private mode */
+    }
   });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!savedTheme()) showTheme(e.matches ? "dark" : "light");
+  });
+}
 
-  /* close menu after clicking a link (mobile UX) */
-  navMenu.querySelectorAll(".nav__link").forEach((link) =>
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("show");
-      navToggle.setAttribute("aria-expanded", "false");
-    })
+/*===== MOTION: pieces hold still for prefers-reduced-motion unless asked =====*/
+const motionButton = document.getElementById("motion");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+let motion = false;
+try {
+  motion = localStorage.getItem("motion") === "play";
+} catch {
+  /* private mode */
+}
+
+/* Each piece's own options stay as written in the HTML; `motion` is layered on top. */
+function applyMotion() {
+  art().forEach((el) => {
+    if (el.dataset.options === undefined) el.dataset.options = el.getAttribute("options") || "{}";
+    const base = JSON.parse(el.dataset.options);
+    el.setAttribute("options", JSON.stringify(motion ? { ...base, motion: true } : base));
+  });
+}
+
+function showMotion() {
+  motionButton.hidden = !reduced.matches;
+  motionButton.firstElementChild.textContent = motion ? "[hold still]" : "[play anyway]";
+  motionButton.setAttribute(
+    "aria-label",
+    motion
+      ? "Hold the pieces still, as your system asks"
+      : "Your system asks for reduced motion, so the pieces hold still. Play them anyway"
   );
 }
 
-/*===== TYPEWRITER =====*/
-const words = [
-  "Python",
-  "Why Leetcode?",
-  "ML",
-  "Quant Computing",
-  "Vibe Coding",
-  "Automation",
-  "Optimization",
-  "Data Structures",
-  "Hiring",
-  "Your Pipeline",
-  "Security",
-  "Performance",
-  "AI",
-  "The Singularity",
-  "Mastery",
-];
-
-const wordSpan = document.querySelector(".home__typing-word");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let wordIndex = 0;
-let letterIndex = 0;
-
-function typeLetter() {
-  const word = words[wordIndex];
-  wordSpan.textContent += word[letterIndex];
-  letterIndex++;
-
-  if (letterIndex < word.length) {
-    setTimeout(typeLetter, 50);
-  } else {
-    setTimeout(nextWord, 1400);
-  }
-}
-
-function nextWord() {
-  wordSpan.textContent = "";
-  wordIndex = (wordIndex + 1) % words.length;
-  letterIndex = 0;
-  typeLetter();
-}
-
-if (wordSpan) {
-  if (reducedMotion) {
-    wordSpan.textContent = words[0];
-  } else {
-    typeLetter();
-  }
-}
-
-/*===== SCROLL SECTIONS ACTIVE LINK =====*/
-const sections = document.querySelectorAll("main section[id]");
-
-function scrollActive() {
-  const scrollY = window.pageYOffset;
-
-  sections.forEach((section) => {
-    const link = document.querySelector(`.nav__menu a[href="#${section.id}"]`);
-    if (!link) return;
-
-    const top = section.offsetTop - 80;
-    const inView = scrollY > top && scrollY <= top + section.offsetHeight;
-    link.classList.toggle("active", inView);
+if (motionButton) {
+  if (motion) applyMotion();
+  showMotion();
+  reduced.addEventListener("change", showMotion);
+  motionButton.addEventListener("click", () => {
+    motion = !motion;
+    try {
+      localStorage.setItem("motion", motion ? "play" : "still");
+    } catch {
+      /* private mode */
+    }
+    showMotion();
+    applyMotion();
   });
 }
-window.addEventListener("scroll", scrollActive, { passive: true });
 
-/*===== SCROLL REVEAL (IntersectionObserver) =====*/
-const revealEls = document.querySelectorAll(".reveal");
+/*===== INK: the logos in colour or one ink =====*/
+const inkButton = document.getElementById("ink");
+let mono = false;
+try {
+  mono = localStorage.getItem("ink") === "mono";
+} catch {
+  /* private mode */
+}
 
-if (reducedMotion || !("IntersectionObserver" in window)) {
-  revealEls.forEach((el) => el.classList.add("is-visible"));
-} else {
-  const observer = new IntersectionObserver(
+function applyInk() {
+  document.querySelectorAll("ascii-art.logo").forEach((el) => el.toggleAttribute("mono", mono));
+  inkButton.firstElementChild.textContent = mono ? "[colour]" : "[mono]";
+  inkButton.setAttribute("aria-label", mono ? "Show the logos in colour" : "Show the logos in one ink");
+}
+
+if (inkButton) {
+  applyInk();
+  inkButton.hidden = false;
+  inkButton.addEventListener("click", () => {
+    mono = !mono;
+    try {
+      localStorage.setItem("ink", mono ? "mono" : "colour");
+    } catch {
+      /* private mode */
+    }
+    applyInk();
+  });
+}
+
+/*===== HERO: one of the scenes, a different one each visit, [another] for the next =====*/
+const SCENES = {
+  "night-coast": "a lighthouse turning its beam under moonlit clouds over a dark sea",
+  "desert-night": "the milky way over a lone acacia on moonless dunes, meteors falling",
+  earthrise: "the earth rising over a cratered lunar horizon in long low sunlight",
+  "aurora-fjord": "aurora curtains rippling over a still fjord, a cabin lit on the shore",
+  "misty-forest": "pine ridges fading into morning fog, sunbeams slanting through",
+  "ocean-sunset": "the sun sets past a pine headland, lit cloud, glitter on rolling sea",
+  "marine-drive": "mumbai's queen's necklace at night, lamps curving round the bay",
+};
+
+const hero = document.querySelector("#hero ascii-art");
+const sceneNext = document.getElementById("scene-next");
+
+function showScene(slug) {
+  hero.setAttribute("piece", slug);
+  hero.setAttribute("label", SCENES[slug]);
+  document.getElementById("scene-name").textContent = slug.replace("-", " ");
+  document.getElementById("scene-note").textContent = SCENES[slug];
+  document.getElementById("scene-link").href = `https://ascii.rest/${slug}/`;
+}
+
+if (hero && sceneNext) {
+  const scenes = (hero.dataset.scenes || "").split(" ").filter((s) => s in SCENES);
+  let at = Math.floor(Math.random() * scenes.length);
+  showScene(scenes[at]);
+  sceneNext.hidden = false;
+  sceneNext.addEventListener("click", () => {
+    at = (at + 1) % scenes.length;
+    showScene(scenes[at]);
+  });
+}
+
+/*===== SIDEBAR: the section on screen is marked current =====*/
+const sections = [...document.querySelectorAll("main section[id]")];
+const sideLinks = new Map(
+  sections.map((s) => [s.id, document.querySelector(`.side h3 a[href="#${s.id}"]`)]).filter(([, a]) => a)
+);
+
+if (sideLinks.size && "IntersectionObserver" in window) {
+  const seen = new Map();
+  const spy = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
+      entries.forEach((e) => seen.set(e.target.id, e.isIntersecting));
+      const current = sections.find((s) => seen.get(s.id));
+      sideLinks.forEach((a, id) => {
+        if (current && id === current.id) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
       });
     },
-    { threshold: 0.15 }
+    { rootMargin: "-20% 0px -60% 0px" }
   );
-  revealEls.forEach((el) => observer.observe(el));
+  sections.forEach((s) => spy.observe(s));
 }
 
 /*===== HIDDEN GEM =====*/
 console.log(
   "%cCurious? There's a flag hiding in this site. Submit with attempt(\"...\")",
-  "color:#5b8aff"
+  "color:#5f6873;font-family:ui-monospace,monospace"
 );
 
 const x = "amF3bnt3aGF0X3lv";
@@ -129,19 +197,21 @@ function attempt(inp) {
   }
 }
 
-/*===== PARTY MODE =====*/
-let partyInterval = null;
-
+/*===== PARTY MODE: the hero bursts into fireworks and the ink cycles =====*/
 function activatePartyMode() {
-  if (partyInterval) return;
-
-  const hueValues = [260, 355, 224, 340];
-  let index = 0;
-
-  partyInterval = setInterval(() => {
-    document.documentElement.style.setProperty("--hue", hueValues[index]);
-    index = (index + 1) % hueValues.length;
-  }, 1000);
+  if (root.classList.contains("party")) return;
+  root.classList.add("party");
+  if (hero && hero.dataset.party) {
+    hero.setAttribute("piece", hero.dataset.party);
+    hero.setAttribute("label", "fireworks");
+    hero.style.setProperty("--cols", "64");
+    hero.style.setProperty("--rows", "24");
+    hero.closest(".well").classList.replace("scene", "big");
+    document.getElementById("scene-name").textContent = "fireworks";
+    document.getElementById("scene-note").textContent = "you found the flag";
+    document.getElementById("scene-link").href = "https://ascii.rest/fireworks/";
+    sceneNext.hidden = true;
+  }
 }
 
 window.attempt = attempt;
