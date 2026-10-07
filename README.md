@@ -6,7 +6,9 @@ where the pictures would be. No build step; open `index.html`.
 
 ## Layout
 
-- `index.html`, `404.html`: the pages. Every picture is an `<ascii-art piece="...">` tag.
+- `index.html`, `404.html`: the pages. Every picture is an `<ascii-art piece="...">` tag. The hero
+  is one of seven full-colour scenes, picked per visit (`data-scenes`); the landscape in About is drawn
+  for the reader's local hour and tonight's moon.
 - `assets/css/styles.css`: one stylesheet. Light and dark follow the system, with a `[dark]` switch.
 - `assets/js/main.js`: theme, reduced-motion override, the `[mono]` switch for the logos,
   the sidebar following the scroll, and a hidden gem.

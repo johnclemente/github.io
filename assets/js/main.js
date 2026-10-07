@@ -121,6 +121,39 @@ if (inkButton) {
   });
 }
 
+/*===== HERO: one of the scenes, a different one each visit, [another] for the next =====*/
+const SCENES = {
+  "night-coast": "a lighthouse turning its beam under moonlit clouds over a dark sea",
+  "desert-night": "the milky way over a lone acacia on moonless dunes, meteors falling",
+  earthrise: "the earth rising over a cratered lunar horizon in long low sunlight",
+  "aurora-fjord": "aurora curtains rippling over a still fjord, a cabin lit on the shore",
+  "misty-forest": "pine ridges fading into morning fog, sunbeams slanting through",
+  "ocean-sunset": "the sun sets past a pine headland, lit cloud, glitter on rolling sea",
+  "marine-drive": "mumbai's queen's necklace at night, lamps curving round the bay",
+};
+
+const hero = document.querySelector("#hero ascii-art");
+const sceneNext = document.getElementById("scene-next");
+
+function showScene(slug) {
+  hero.setAttribute("piece", slug);
+  hero.setAttribute("label", SCENES[slug]);
+  document.getElementById("scene-name").textContent = slug.replace("-", " ");
+  document.getElementById("scene-note").textContent = SCENES[slug];
+  document.getElementById("scene-link").href = `https://ascii.rest/${slug}/`;
+}
+
+if (hero && sceneNext) {
+  const scenes = (hero.dataset.scenes || "").split(" ").filter((s) => s in SCENES);
+  let at = Math.floor(Math.random() * scenes.length);
+  showScene(scenes[at]);
+  sceneNext.hidden = false;
+  sceneNext.addEventListener("click", () => {
+    at = (at + 1) % scenes.length;
+    showScene(scenes[at]);
+  });
+}
+
 /*===== SIDEBAR: the section on screen is marked current =====*/
 const sections = [...document.querySelectorAll("main section[id]")];
 const sideLinks = new Map(
@@ -168,12 +201,16 @@ function attempt(inp) {
 function activatePartyMode() {
   if (root.classList.contains("party")) return;
   root.classList.add("party");
-  const hero = document.querySelector("#hero ascii-art");
   if (hero && hero.dataset.party) {
     hero.setAttribute("piece", hero.dataset.party);
     hero.setAttribute("label", "fireworks");
     hero.style.setProperty("--cols", "64");
     hero.style.setProperty("--rows", "24");
+    hero.closest(".well").classList.replace("scene", "big");
+    document.getElementById("scene-name").textContent = "fireworks";
+    document.getElementById("scene-note").textContent = "you found the flag";
+    document.getElementById("scene-link").href = "https://ascii.rest/fireworks/";
+    sceneNext.hidden = true;
   }
 }
 

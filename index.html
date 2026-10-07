@@ -94,11 +94,23 @@
         </span>
       </div>
 
-      <!-- The hero: a city at night. Party mode (see main.js) swaps it for fireworks. -->
-      <div class="well big hero" id="hero">
-        <ascii-art piece="skyline" style="--cols: 64; --rows: 23" data-party="fireworks"
-          label="a city skyline at night, drawn in ascii"></ascii-art>
+      <!--
+        The hero: one of ascii.rest's full-colour scenes, a different one each visit
+        (main.js picks from data-scenes). Party mode swaps it for fireworks.
+      -->
+      <div class="well scene hero" id="hero">
+        <ascii-art piece="night-coast" style="--cols: 200; --rows: 100" data-party="fireworks"
+          data-scenes="night-coast desert-night earthrise aurora-fjord misty-forest ocean-sunset marine-drive"
+          label="a lighthouse turning its beam under moonlit clouds over a dark sea"></ascii-art>
       </div>
+      <p class="caption muted">
+        <span id="scene-name">night coast</span>: <span id="scene-note">a lighthouse turning its beam under moonlit
+          clouds over a dark sea</span>
+        <span class="tools">
+          <a id="scene-link" href="https://ascii.rest/night-coast/">[on ascii.rest]</a>
+          <button id="scene-next" class="button" type="button" hidden><span>[another]</span></button>
+        </span>
+      </p>
 
       <p class="pitch">
         I'm a full stack engineer at Ally Behavior Centers. I build software people actually use: web apps,
@@ -283,6 +295,8 @@
           <h2>about</h2>
         </div>
 
+        <div class="split">
+        <div>
         <div class="prose">
           <p>
             I'm a full stack engineer at <a href="https://allybehavior.com" target="_blank"
@@ -322,6 +336,17 @@
           <span>network+</span>
           <span>a+</span>
         </p>
+        </div>
+
+        <!-- Drawn for the reader's own hour and tonight's real moon. -->
+        <figure class="aside">
+          <div class="well wide">
+            <ascii-art piece="landscape" style="--cols: 64; --rows: 18"
+              label="a mountain range and a lake under the sun or moon of your local hour"></ascii-art>
+          </div>
+          <figcaption class="muted">wherever you are, it's this time of day there. the moon is tonight's.</figcaption>
+        </figure>
+        </div>
       </section>
 
       <!--===== STACK =====-->
@@ -395,6 +420,7 @@
         </div>
         <p class="lede muted">Have a project in mind, or just want to talk shop? I'll get back to you quickly.</p>
 
+        <div class="split">
         <form id="contactForm" class="form" novalidate>
           <div class="field">
             <label for="name">name</label>
@@ -422,7 +448,20 @@
             <p class="status" id="contact-status" role="status" aria-live="polite"></p>
           </div>
         </form>
+
+        <figure class="aside">
+          <div class="well wide">
+            <ascii-art piece="morse" style="--cols: 64; --rows: 19" options='{"text":"say hi"}'
+              label="a lamp keying 'say hi' in morse code"></ascii-art>
+          </div>
+        </figure>
+        </div>
       </section>
+
+      <div class="line centre">
+        <ascii-art piece="wave-text" style="--cols: 36; --rows: 5" fps="12"
+          options='{"text":"thanks for scrolling"}' label="thanks for scrolling"></ascii-art>
+      </div>
 
       <footer class="foot muted">
         <span>john clemente · <a href="https://github.com/johnclemente/github.io">source</a></span>

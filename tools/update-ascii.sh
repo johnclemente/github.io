@@ -34,8 +34,9 @@ mkdir -p "$out/fonts"
 cp "$tmp/ascii/site/public/fonts/"{ascii-rest-mono.woff2,OFL.txt} "$out/fonts/"
 git -C "$tmp/ascii" rev-parse HEAD > "$out/VERSION"
 
-# Every piece named in the pages, plus the one party mode swaps in (data-party).
-grep -ohE '(piece|data-party)="[a-z0-9-]+"' index.html 404.html | cut -d'"' -f2 | sort -u |
+# Every piece named in the pages: each piece="...", the scenes the hero picks
+# from (data-scenes), and the one party mode swaps in (data-party).
+grep -ohE '(piece|data-party|data-scenes)="[a-z0-9 -]+"' index.html 404.html | cut -d'"' -f2 | tr ' ' '\n' | sort -u |
   while read -r piece; do
     cp "$tmp/ascii/dist/pieces/$piece.js" "$out/pieces/"
   done
