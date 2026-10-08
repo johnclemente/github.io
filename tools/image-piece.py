@@ -55,6 +55,7 @@ def main():
     p.add_argument("--scan", type=float, default=7, help="seconds between scans, 0 for none")
     p.add_argument("--fit", choices=["contain", "cover"], default="contain")
     p.add_argument("--gamma", type=float, default=0.65, help="below 1 lifts faint detail")
+    p.add_argument("--chroma", type=float, default=1.3, help="how much a colour difference alone sizes a dot; raise it when the picture's colours are close in brightness")
     args = p.parse_args()
 
     cols, rows = args.cols, args.rows
@@ -88,7 +89,7 @@ def main():
         contrast = np.abs(lum(frgb) - lum(g)) / 255
         # Colour difference counts too, so a red on a grey of equal brightness still shows.
         chroma = np.sqrt(((frgb - g) ** 2).sum(-1)) / 441
-        fsize = np.clip(np.maximum(contrast * 1.6, chroma * 1.3), 0, 1)
+        fsize = np.clip(np.maximum(contrast * 1.6, chroma * args.chroma), 0, 1)
     else:
         fsize = falpha
     fsize[falpha < 0.08] = 0

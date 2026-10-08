@@ -368,20 +368,6 @@ section {
   overflow: hidden;
 }
 
-.caption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 2ch;
-  margin-top: 0.5rem;
-}
-
-.caption .tools {
-  display: flex;
-  gap: 2ch;
-  margin-left: auto;
-}
-
 /* The typewriter line: inline art sized to the line, never wider than the page. */
 .line {
   container-type: inline-size;

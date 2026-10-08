@@ -16,4 +16,4 @@ piece Title.png graviscape --name "graviscape" --note "the title screen on a lap
 piece RendezvousTitleScreen.png rendezvous --name "rendezvous" --note "the title screen on a laptop"
 piece HumanResources.png human-resources --name "human resources" --note "the office, on a laptop"
 piece dottrail.jpg dot-trail --name "dot trail" --note "the menu: four dots and play"
-piece fuddle.jpg fuddle --name "fuddle" --note "how to play, on a cozy card"
+piece fuddle-board.png fuddle --name "fuddle" --note "a board mid-puzzle: word tiles on the grid" --chroma 6
