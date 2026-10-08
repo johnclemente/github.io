@@ -95,21 +95,19 @@
       </div>
 
       <!--
-        The hero: one of ascii.rest's full-colour scenes, a different one each visit
-        (main.js picks from data-scenes). Party mode swaps it for fireworks.
+        The hero: one of ascii.rest's full-colour scenes, chosen for the reader's
+        time of day (main.js picks from data-scenes, dawn to night). Party mode
+        swaps it for fireworks.
       -->
       <div class="well scene hero" id="hero">
         <ascii-art piece="night-coast" style="--cols: 200; --rows: 100" data-party="fireworks"
-          data-scenes="night-coast desert-night earthrise aurora-fjord misty-forest ocean-sunset marine-drive"
+          data-scenes="misty-forest alpine-dawn taj-dawn deep-reef ocean-sunset kyoto-dusk storm-plains varanasi-ghats night-coast desert-night aurora-fjord marine-drive earthrise"
           label="a lighthouse turning its beam under moonlit clouds over a dark sea"></ascii-art>
       </div>
       <p class="caption muted">
         <span id="scene-name">night coast</span>: <span id="scene-note">a lighthouse turning its beam under moonlit
           clouds over a dark sea</span>
-        <span class="tools">
-          <a id="scene-link" href="https://ascii.rest/night-coast/">[on ascii.rest]</a>
-          <button id="scene-next" class="button" type="button" hidden><span>[another]</span></button>
-        </span>
+        <span class="tools" id="scene-when">the scene follows your clock</span>
       </p>
 
       <p class="pitch">
@@ -133,9 +131,8 @@
 
         <div class="grid wide">
           <a class="card" id="attwh" href="https://allthatwehave.com" target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="heatmap" style="--cols: 66; --rows: 12" options='{"unit":"habits kept","seed":3}'
-                label="a habit heatmap filling in day by day"></ascii-art>
+            <div class="well pic" style="--ground: #080808">
+              <ascii-art src="assets/art/attwh-memento.js" style="--cols: 128; --rows: 96" label="all that we have: your life in weeks, a grid of 4,680 of them"></ascii-art>
             </div>
             <span class="name">all that we have</span>
             <span class="note">A habit tracker built around a simple idea: what you do today matters. Daily streaks,
@@ -144,9 +141,8 @@
           </a>
 
           <a class="card" id="jawn" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="bouncing-balls" style="--cols: 64; --rows: 22" options='{"balls":5}' fps="20"
-                label="balls bouncing around a box"></ascii-art>
+            <div class="well pic" style="--ground: #080808">
+              <ascii-art src="assets/art/jawn.js" style="--cols: 128; --rows: 96" label="the jawn.games homepage: games you can actually just play"></ascii-art>
             </div>
             <span class="name">jawn.games</span>
             <span class="note">Free browser games: puzzles, word games, and multiplayer party games. No installs;
@@ -173,8 +169,8 @@
           <a class="card" id="ctf"
             href="https://capable-sovereign-5bd.notion.site/CTF-94ddc03691d84b76b804a873fb110654?pvs=4"
             target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="matrix-rain" style="--cols: 63; --rows: 24" label="streams of glyphs falling like rain"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/ctf.js" style="--cols: 128; --rows: 96" label="a capture-the-flag flag, hand-drawn"></ascii-art>
             </div>
             <span class="name">ctf progress tracker</span>
             <span class="note">Capture-the-flag practice with Kali, Burp, Nmap, Bash and Python, with write-ups.</span>
@@ -183,10 +179,8 @@
 
           <a class="card" id="mailchimp" href="https://github.com/johnclemente/MailchimpAutomations" target="_blank"
             rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="progress-bar" style="--cols: 48; --rows: 11" fps="20"
-                options='{"labels":["fetching","matching","tagging","syncing","sending"]}'
-                label="progress bars filling at their own pace"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/mailchimp.js" style="--cols: 128; --rows: 96" label="a chimp, hand-drawn"></ascii-art>
             </div>
             <span class="name">mailchimp automations</span>
             <span class="note">Python scripts for batch audience management: fewer manual updates, fewer mistakes.</span>
@@ -195,10 +189,8 @@
 
           <a class="card" id="cheatsheets" href="https://www.notion.so/CTF-94ddc03691d84b76b804a873fb110654"
             target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="file-tree" style="--cols: 36; --rows: 23"
-                options='{"root":"cheatsheets/","entries":"recon/\n  nmap.md\n  gobuster.md\nweb/\n  burp.md\n  sqli.md\n  xss.md\nlinux/\n  privesc.md\n  shells.md\nwindows/\n  active-directory.md\n  powershell.md\nREADME.md"}'
-                label="a folder of cheat sheets opening and closing"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/cheatsheets.js" style="--cols: 128; --rows: 96" label="hands holding a console"></ascii-art>
             </div>
             <span class="name">security cheat sheets</span>
             <span class="note">Reference notes for the tooling I reach for most.</span>
@@ -208,9 +200,8 @@
           <a class="card" id="gcp-forms"
             href="https://capable-sovereign-5bd.notion.site/GCP-project-Firebase-backend-c0e43f7ddd724c41851d250af303d7c8?pvs=74"
             target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="form-controls" style="--cols: 54; --rows: 16" options='{"title":"sign up"}'
-                label="a terminal style form being filled in"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/gcp-forms.js" style="--cols: 128; --rows: 96" label="a locked document, hand-drawn"></ascii-art>
             </div>
             <span class="name">form validation on gcp</span>
             <span class="note">Secure form validation backed by Cloud Functions and Firebase.</span>
@@ -230,8 +221,8 @@
         <div class="grid" style="margin-top: 1.5rem">
           <a class="card" id="christmas-caper" href="https://apps.apple.com/az/app/christmas-caper/id6472870752"
             target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="snowfall" style="--cols: 64; --rows: 22" label="snow falling"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/christmas-caper.js" style="--cols: 128; --rows: 96" label="the christmas caper title screen: a snowy street, start and continue"></ascii-art>
             </div>
             <span class="name">christmas caper</span>
             <span class="note">A free mobile game for iOS and Android.</span>
@@ -240,8 +231,8 @@
 
           <a class="card" id="graviscape" href="https://johnclemente.itch.io" target="_blank"
             rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="black-hole" style="--cols: 64; --rows: 20" label="matter spiralling into a black hole"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/graviscape.js" style="--cols: 128; --rows: 96" label="the graviscape title screen on a laptop"></ascii-art>
             </div>
             <span class="name">graviscape</span>
             <span class="note">A gravity-based puzzle game. Top 10% finisher.</span>
@@ -250,8 +241,8 @@
 
           <a class="card" id="rendezvous" href="https://johnclemente.itch.io/" target="_blank"
             rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="candle" style="--cols: 40; --rows: 30" label="a candle burning"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/rendezvous.js" style="--cols: 128; --rows: 96" label="the rendezvous title screen on a laptop"></ascii-art>
             </div>
             <span class="name">rendezvous</span>
             <span class="note">A summoning-themed jam entry.</span>
@@ -260,8 +251,8 @@
 
           <a class="card" id="human-resources" href="https://johnclemente.itch.io/" target="_blank"
             rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="coffee" style="--cols: 52; --rows: 24" label="a steaming cup of coffee"></ascii-art>
+            <div class="well pic">
+              <ascii-art src="assets/art/human-resources.js" style="--cols: 128; --rows: 96" label="the human resources office, on a laptop"></ascii-art>
             </div>
             <span class="name">human resources</span>
             <span class="note">A game about escaping work.</span>
@@ -269,8 +260,8 @@
           </a>
 
           <a class="card" id="dot-trail" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="maze" style="--cols: 61; --rows: 21" label="a maze being drawn and solved"></ascii-art>
+            <div class="well pic" style="--ground: #101018">
+              <ascii-art src="assets/art/dot-trail.js" style="--cols: 128; --rows: 96" label="the dot trail menu: four coloured dots and play"></ascii-art>
             </div>
             <span class="name">dot trail</span>
             <span class="note">A pattern-puzzle game with 127+ levels, playable free in the browser.</span>
@@ -278,9 +269,8 @@
           </a>
 
           <a class="card" id="fuddle" href="https://jawn.games" target="_blank" rel="noopener noreferrer">
-            <div class="well">
-              <ascii-art piece="dissolve" style="--cols: 64; --rows: 13"
-                options='{"words":["fuddle","tiles","words","daily"]}' label="words dissolving into one another"></ascii-art>
+            <div class="well pic" style="--ground: #d0e8e8">
+              <ascii-art src="assets/art/fuddle.js" style="--cols: 128; --rows: 96" label="fuddle's how-to-play card"></ascii-art>
             </div>
             <span class="name">fuddle</span>
             <span class="note">A cozy word-tile puzzle: 175 crosswords plus a daily challenge.</span>
@@ -465,7 +455,8 @@
 
       <footer class="foot muted">
         <span>john clemente · <a href="https://github.com/johnclemente/github.io">source</a></span>
-        <span>art by <a href="https://ascii.rest">ascii.rest</a>, @bas3line, mit</span>
+        <span>animated ascii art by <a href="https://ascii.rest">ascii.rest</a>, made by
+          <a href="https://github.com/bas3line">@bas3line</a>, mit licensed</span>
       </footer>
     </main>
   </div>

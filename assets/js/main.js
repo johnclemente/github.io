@@ -121,37 +121,47 @@ if (inkButton) {
   });
 }
 
-/*===== HERO: one of the scenes, a different one each visit, [another] for the next =====*/
+/*===== HERO: a scene for the reader's time of day, a different one each day =====*/
 const SCENES = {
-  "night-coast": "a lighthouse turning its beam under moonlit clouds over a dark sea",
-  "desert-night": "the milky way over a lone acacia on moonless dunes, meteors falling",
-  earthrise: "the earth rising over a cratered lunar horizon in long low sunlight",
-  "aurora-fjord": "aurora curtains rippling over a still fjord, a cabin lit on the shore",
-  "misty-forest": "pine ridges fading into morning fog, sunbeams slanting through",
-  "ocean-sunset": "the sun sets past a pine headland, lit cloud, glitter on rolling sea",
-  "marine-drive": "mumbai's queen's necklace at night, lamps curving round the bay",
+  "misty-forest": ["dawn", "pine ridges fading into morning fog, sunbeams slanting through"],
+  "alpine-dawn": ["dawn", "snow peaks catching first light above a still, misty mountain lake"],
+  "taj-dawn": ["dawn", "the taj mahal at sunrise, mirrored in its pool through morning haze"],
+  "deep-reef": ["day", "light shafts, swaying kelp and a turning school of fish over a reef"],
+  "ocean-sunset": ["dusk", "the sun sets past a pine headland, lit cloud, glitter on rolling sea"],
+  "kyoto-dusk": ["dusk", "a pagoda at dusk behind a cherry tree lit by a stone lantern"],
+  "storm-plains": ["dusk", "an anvil thunderhead at dusk flickering over a wheat field"],
+  "varanasi-ghats": ["dusk", "dusk aarti on the ganga, lamps on the steps and diyas on the water"],
+  "night-coast": ["night", "a lighthouse turning its beam under moonlit clouds over a dark sea"],
+  "desert-night": ["night", "the milky way over a lone acacia on moonless dunes, meteors falling"],
+  "aurora-fjord": ["night", "aurora curtains rippling over a still fjord, a cabin lit on the shore"],
+  "marine-drive": ["night", "mumbai's queen's necklace at night, lamps curving round the bay"],
+  earthrise: ["night", "the earth rising over a cratered lunar horizon in long low sunlight"],
 };
+const WHEN = { dawn: "it's early where you are", day: "it's daytime where you are", dusk: "it's evening where you are", night: "it's night where you are" };
+
+/* Dawn 5–9, day 9–17, dusk 17–20, night otherwise: the reader's own clock. */
+const partOfDay = (hour) => (hour < 5 ? "night" : hour < 9 ? "dawn" : hour < 17 ? "day" : hour < 20 ? "dusk" : "night");
 
 const hero = document.querySelector("#hero ascii-art");
-const sceneNext = document.getElementById("scene-next");
 
 function showScene(slug) {
+  const [, note] = SCENES[slug];
   hero.setAttribute("piece", slug);
-  hero.setAttribute("label", SCENES[slug]);
+  hero.setAttribute("label", note);
   document.getElementById("scene-name").textContent = slug.replace("-", " ");
-  document.getElementById("scene-note").textContent = SCENES[slug];
-  document.getElementById("scene-link").href = `https://ascii.rest/${slug}/`;
+  document.getElementById("scene-note").textContent = note;
 }
 
-if (hero && sceneNext) {
-  const scenes = (hero.dataset.scenes || "").split(" ").filter((s) => s in SCENES);
-  let at = Math.floor(Math.random() * scenes.length);
-  showScene(scenes[at]);
-  sceneNext.hidden = false;
-  sceneNext.addEventListener("click", () => {
-    at = (at + 1) % scenes.length;
-    showScene(scenes[at]);
-  });
+if (hero) {
+  const now = new Date();
+  const part = partOfDay(now.getHours());
+  const scenes = (hero.dataset.scenes || "").split(" ").filter((s) => SCENES[s]?.[0] === part);
+  if (scenes.length) {
+    // The same scene all day, a different one tomorrow.
+    const day = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 864e5);
+    showScene(scenes[day % scenes.length]);
+    document.getElementById("scene-when").textContent = `${WHEN[part]}, so the scene is too`;
+  }
 }
 
 /*===== SIDEBAR: the section on screen is marked current =====*/
@@ -209,8 +219,7 @@ function activatePartyMode() {
     hero.closest(".well").classList.replace("scene", "big");
     document.getElementById("scene-name").textContent = "fireworks";
     document.getElementById("scene-note").textContent = "you found the flag";
-    document.getElementById("scene-link").href = "https://ascii.rest/fireworks/";
-    sceneNext.hidden = true;
+    document.getElementById("scene-when").textContent = "";
   }
 }
 
