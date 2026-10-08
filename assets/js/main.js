@@ -137,7 +137,6 @@ const SCENES = {
   "marine-drive": ["night", "mumbai's queen's necklace at night, lamps curving round the bay"],
   earthrise: ["night", "the earth rising over a cratered lunar horizon in long low sunlight"],
 };
-const WHEN = { dawn: "it's early where you are", day: "it's daytime where you are", dusk: "it's evening where you are", night: "it's night where you are" };
 
 /* Dawn 5–9, day 9–17, dusk 17–20, night otherwise: the reader's own clock. */
 const partOfDay = (hour) => (hour < 5 ? "night" : hour < 9 ? "dawn" : hour < 17 ? "day" : hour < 20 ? "dusk" : "night");
@@ -145,11 +144,8 @@ const partOfDay = (hour) => (hour < 5 ? "night" : hour < 9 ? "dawn" : hour < 17 
 const hero = document.querySelector("#hero ascii-art");
 
 function showScene(slug) {
-  const [, note] = SCENES[slug];
   hero.setAttribute("piece", slug);
-  hero.setAttribute("label", note);
-  document.getElementById("scene-name").textContent = slug.replace("-", " ");
-  document.getElementById("scene-note").textContent = note;
+  hero.setAttribute("label", SCENES[slug][1]);
 }
 
 if (hero) {
@@ -160,7 +156,6 @@ if (hero) {
     // The same scene all day, a different one tomorrow.
     const day = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 864e5);
     showScene(scenes[day % scenes.length]);
-    document.getElementById("scene-when").textContent = `${WHEN[part]}, so the scene is too`;
   }
 }
 
@@ -217,9 +212,6 @@ function activatePartyMode() {
     hero.style.setProperty("--cols", "64");
     hero.style.setProperty("--rows", "24");
     hero.closest(".well").classList.replace("scene", "big");
-    document.getElementById("scene-name").textContent = "fireworks";
-    document.getElementById("scene-note").textContent = "you found the flag";
-    document.getElementById("scene-when").textContent = "";
   }
 }
 
