@@ -349,6 +349,25 @@ section {
   overflow: hidden;
 }
 
+/*
+ * A picture from the old site drawn as a halftone (assets/art, made by
+ * tools/image-piece.py): 128×96 square cells on a canvas, 4:3 like the well,
+ * on its own ground where it has one, or on the page's where it was clear.
+ */
+.well.pic {
+  display: block;
+  container-type: inline-size;
+  padding: 0;
+  background: var(--ground, var(--well));
+}
+
+.well.pic ascii-art {
+  width: 100%;
+  font-size: calc(100cqi / var(--cols) / 0.6);
+  line-height: 0.6;
+  overflow: hidden;
+}
+
 .caption {
   display: flex;
   flex-wrap: wrap;
